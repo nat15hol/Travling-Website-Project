@@ -9,32 +9,36 @@ function DestinationsPage() {
 
   return (
     <>
-      <section id="center" style={{backgroundColor: "orange" }}>
+      <div style={{backgroundColor: "orange" }}>
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
         </div>
-      </section>
+      </div>
 
       <div className="ticks"></div>
 
       <section id="next-steps">
         <div id="docs" style={{backgroundColor: "lightblue", marginLeft: 60}}>
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
+          <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
+            A map here?
+          </div>
+
+          <div style={{backgroundColor: "gray", alignContent: "center", textAlign: "center", height: "300px", color: "white"}}>
+            Filter options box
+          </div>
         </div>
-        <div id="social" style={{backgroundColor: "yellow", marginLeft: 320}}>
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
+        <div style={{flex: "1 1 0", flexDirection: "column", marginLeft: 275}}>
+          <div style={{backgroundColor: "green"}}>
+
+          </div>
+          <div style={{backgroundColor: "green"}}>
+
+          </div>
+          <div style={{backgroundColor: "yellow"}}>
+
+          </div>
         </div>
       </section>
 
