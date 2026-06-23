@@ -1,8 +1,7 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+.search-page {
   color: #071b3a;
   background-color: #f5f7fb;
+  min-height: 100vh;
 }
 
 .hero {
@@ -22,6 +21,21 @@ body {
   align-items: center;
 }
 
+.heroText {
+  margin-top: 70px;
+  max-width: 400px;
+}
+
+.heroText h1 {
+  font-size: 48px;
+  margin: 0 0 10px;
+}
+
+.heroText p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
 .navbar button,
 .searchBox button,
 .resultsHeader button,
@@ -35,16 +49,6 @@ body {
   padding: 12px 22px;
   cursor: pointer;
   font-weight: bold;
-}
-
-.heroText {
-  margin-top: 70px;
-  max-width: 400px;
-}
-
-.heroText h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
 }
 
 .searchBox {
@@ -85,6 +89,7 @@ body {
 .filters,
 .hotelCard {
   background: white;
+  color: #071b3a;
   border-radius: 12px;
   box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
@@ -118,10 +123,36 @@ body {
   margin-top: 20px;
 }
 
+
+
+/*------------------------------*/
+/*--------Price Filter----------*/
+/*------------------------------*/
+.priceFilter {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.priceFilter p {
+  color: #6b7890;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.priceFilter strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+.priceSlider {
+  width: 100%;
+  cursor: pointer;
+}
+
 .resultsHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #071b3a;
 }
 
 .hotelCard {

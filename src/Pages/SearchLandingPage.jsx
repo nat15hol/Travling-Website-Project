@@ -1,4 +1,4 @@
-import "../styles/SearchLandingPage.css";
+import "../Styles/SearchLandingPage.css";
 
 function SearchLandingPage() {
   const stays = [
@@ -29,8 +29,9 @@ function SearchLandingPage() {
   ];
 
   return (
-    <div className="page">
+    <div className="search-page">
       <header className="hero">
+
         <nav className="navbar">
           <h2>✈ Wanderlust</h2>
           <button>Access Account</button>
@@ -67,6 +68,20 @@ function SearchLandingPage() {
 
           <div className="filters">
             <h3>Filter options</h3>
+
+            <div className="priceFilter">
+            <h4>Price range</h4>
+            <p>Max price per night</p>
+            <strong>$250</strong>
+
+            <input
+              type="range"
+              min="50"
+              max="500"
+              defaultValue="250"
+              className="priceSlider"
+            />
+            </div>
 
             <h4>Property type</h4>
             <label><input type="checkbox" /> Hotels</label>

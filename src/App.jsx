@@ -1,4 +1,4 @@
-import SearchLandingPage from "./pages/SearchLandingPage";
+import SearchLandingPage from "./Pages/SearchLandingPage";
 
 function App() {
   return <SearchLandingPage />;
