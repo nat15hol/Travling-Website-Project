@@ -1,12 +1,15 @@
 
-import SearchLandingPage from "./pages/SearchLandingPage";
+import { useState } from "react";
 import Login from "./Pages/Login";
-
-
+import SearchLandingPage from "./pages/SearchLandingPage";
 function App() {
-  const showLogin = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return showLogin ? <Login /> : <SearchLandingPage />;
+  return isLoggedIn ? (
+    <SearchLandingPage />
+  ) : (
+    <Login setIsLoggedIn={setIsLoggedIn} />
+  );
 }
 
 export default App;
