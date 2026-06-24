@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './DestinationsPage.css'
+import { useState } from 'react';
+import "../Styles/DestinationsPage.css";
+import { destinations } from "../data/destinations";
 
-function DestinationsPage() {
-  const [count, setCount] = useState(0)
+export default function DestinationsPage() {
 
   return (
     <>
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          {/* <img src={heroImg} className="base" width="170" height="179" alt="" /> */}
         </div>
         <div>
         </div>
@@ -45,7 +42,5 @@ function DestinationsPage() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
-  )
+  );
 }
-
-export default DestinationsPage;
