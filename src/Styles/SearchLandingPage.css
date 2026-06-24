@@ -1,9 +1,16 @@
+/*------------------------------*/
+/*--------Page Base-------------*/
+/*------------------------------*/
 .search-page {
   color: #071b3a;
   background-color: #f5f7fb;
   min-height: 100vh;
 }
 
+
+/*------------------------------*/
+/*--------Hero/Header-----------*/
+/*------------------------------*/
 .hero {
   min-height: 380px;
   background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
@@ -14,28 +21,28 @@
   padding: 30px 50px;
   position: relative;
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .heroText {
   margin-top: 70px;
   max-width: 400px;
 }
-
 .heroText h1 {
   font-size: 48px;
   margin: 0 0 10px;
 }
-
 .heroText p {
   font-size: 18px;
   line-height: 1.4;
 }
 
+
+/*------------------------------*/
+/*--------Buttons---------------*/
+/*------------------------------*/
 .navbar button,
 .searchBox button,
 .resultsHeader button,
@@ -51,6 +58,10 @@
   font-weight: bold;
 }
 
+
+/*------------------------------*/
+/*--------Search Box------------*/
+/*------------------------------*/
 .searchBox {
   position: absolute;
   left: 50%;
@@ -65,17 +76,60 @@
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
-
-.searchBox div {
+.searchBox > div {
   min-width: 140px;
 }
-
 .searchBox span {
   display: block;
   color: #6b7890;
   font-size: 14px;
 }
 
+
+/*------------------------------*/
+/*--------Destination Search----*/
+/*------------------------------*/
+.destinationSearch {
+  position: relative;
+  min-width: 180px;
+}
+.destinationSearch input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #071b3a;
+  width: 160px;
+}
+.suggestions {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 10;
+}
+.suggestions button {
+  display: block;
+  width: 100%;
+  background: white;
+  color: #071b3a;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+.suggestions button:hover {
+  background: #f0f4ff;
+}
+
+
+/*------------------------------*/
+/*--------Main Layout-----------*/
+/*------------------------------*/
 .content {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -85,6 +139,9 @@
   padding: 0 30px;
 }
 
+/*------------------------------*/
+/*--------Shared Cards----------*/
+/*------------------------------*/
 .mapBox,
 .filters,
 .hotelCard {
@@ -94,6 +151,10 @@
   box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
 
+
+/*------------------------------*/
+/*--------Map Box---------------*/
+/*------------------------------*/
 .mapBox {
   height: 260px;
   background: #dceefe;
@@ -105,24 +166,24 @@
   margin-bottom: 20px;
 }
 
+
+/*------------------------------*/
+/*--------Filters---------------*/
+/*------------------------------*/
 .filters {
   padding: 20px;
 }
-
 .filters label {
   display: block;
   margin: 10px 0;
 }
-
 .filters h4 {
   margin-top: 25px;
 }
-
 .filterButton {
   width: 100%;
   margin-top: 20px;
 }
-
 
 
 /*------------------------------*/
@@ -148,6 +209,10 @@
   cursor: pointer;
 }
 
+
+/*------------------------------*/
+/*--------Results Header--------*/
+/*------------------------------*/
 .resultsHeader {
   display: flex;
   justify-content: space-between;
@@ -155,37 +220,40 @@
   color: #071b3a;
 }
 
+
+/*------------------------------*/
+/*--------Hotel Cards-----------*/
+/*------------------------------*/
 .hotelCard {
   display: grid;
   grid-template-columns: 300px 1fr 170px;
   margin-bottom: 25px;
   overflow: hidden;
 }
-
 .hotelCard img {
   width: 100%;
   height: 240px;
   object-fit: cover;
 }
-
 .hotelInfo {
   padding: 20px;
 }
-
 .hotelInfo h3 {
   margin-top: 0;
   font-size: 24px;
 }
-
 .hotelInfo span {
   color: #0067e6;
 }
-
 .amenities {
   margin-top: 25px;
   font-size: 14px;
 }
 
+
+/*------------------------------*/
+/*--------Price Box-------------*/
+/*------------------------------*/
 .priceBox {
   padding: 20px;
   text-align: center;
@@ -193,17 +261,19 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .priceBox h2 {
   font-size: 32px;
   margin: 10px 0;
 }
-
 .priceBox small {
   margin-top: 12px;
   color: green;
 }
 
+
+/*------------------------------*/
+/*--------Responsive------------*/
+/*------------------------------*/
 @media (max-width: 900px) {
   .content {
     grid-template-columns: 1fr;
