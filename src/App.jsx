@@ -1,7 +1,12 @@
-import SearchLandingPage from "./Pages/SearchLandingPage";
+
+import SearchLandingPage from "./pages/SearchLandingPage";
+import Login from "./Pages/Login";
+
 
 function App() {
-  return <SearchLandingPage />;
+  const showLogin = true;
+
+  return showLogin ? <Login /> : <SearchLandingPage />;
 }
 
 export default App;
