@@ -12,7 +12,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
     shortDescription: "Stylish hotel close to classic Paris landmarks.",
     longDescription: "A comfortable city hotel with elegant rooms, easy access to cafés, museums and famous Paris attractions.",
-    amenities: ["Free Wi-Fi", "Breakfast", "City View"],
+    amenities: ["Free Wi-Fi", "Breakfast",],
     rooms: [
       { type: "Standard Room", available: 6, maxGuests: 2 },
       { type: "Family Room", available: 2, maxGuests: 4 },
@@ -44,7 +44,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f",
     shortDescription: "Modern apartments near the river Seine.",
     longDescription: "Spacious apartments with kitchen access, modern interiors and a convenient location near the Seine.",
-    amenities: ["Free Wi-Fi", "Kitchen", "River View"],
+    amenities: ["Free Wi-Fi"],
     rooms: [
       { type: "Studio Apartment", available: 3, maxGuests: 2 },
       { type: "Two Bedroom Apartment", available: 2, maxGuests: 5 },
@@ -60,7 +60,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1431274172761-fca41d930114",
     shortDescription: "Simple and affordable stay in central Paris.",
     longDescription: "A practical hotel for travelers who want a central location, clean rooms and easy access to public transport.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Air Conditioning"],
+    amenities: ["Free Wi-Fi", "Breakfast", "Gym"],
     rooms: [
       { type: "Single Room", available: 5, maxGuests: 1 },
       { type: "Double Room", available: 4, maxGuests: 2 },
@@ -76,7 +76,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f",
     shortDescription: "Relaxing residence with a quiet garden area.",
     longDescription: "A peaceful Paris stay with comfortable rooms, garden seating and close connections to shopping and sightseeing.",
-    amenities: ["Free Wi-Fi", "Garden", "Breakfast"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Comfort Room", available: 4, maxGuests: 2 },
       { type: "Garden Suite", available: 2, maxGuests: 3 },
@@ -112,7 +112,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1486299267070-83823f5448dd",
     shortDescription: "Affordable stay near Camden Market.",
     longDescription: "A simple and lively place to stay near music venues, markets and public transport connections.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Bar"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Twin Room", available: 5, maxGuests: 2 },
       { type: "Triple Room", available: 2, maxGuests: 3 },
@@ -128,7 +128,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af",
     shortDescription: "Elegant suites in a calm London district.",
     longDescription: "Premium suites with stylish interiors, comfortable beds and easy access to museums, shops and restaurants.",
-    amenities: ["Free Wi-Fi", "Kitchen", "Air Conditioning"],
+    amenities: ["Free Wi-Fi", "Air Conditioning"],
     rooms: [
       { type: "Junior Suite", available: 3, maxGuests: 2 },
       { type: "Luxury Suite", available: 1, maxGuests: 4 },
@@ -144,7 +144,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
     shortDescription: "Apartments with easy access to the Thames.",
     longDescription: "Modern apartments for travelers who want more space, a kitchen and a comfortable base for exploring London.",
-    amenities: ["Free Wi-Fi", "Kitchen", "River View"],
+    amenities: ["Free Wi-Fi"],
     rooms: [
       { type: "Studio Apartment", available: 4, maxGuests: 2 },
       { type: "One Bedroom Apartment", available: 2, maxGuests: 3 },
@@ -160,7 +160,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
     shortDescription: "Modern design hotel in creative Shoreditch.",
     longDescription: "A stylish hotel near restaurants, nightlife and creative spaces, perfect for a short city break.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Bar"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Design Room", available: 5, maxGuests: 2 },
       { type: "Loft Room", available: 2, maxGuests: 3 },
@@ -180,7 +180,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1529260830199-42c24126f198",
     shortDescription: "Classic hotel close to the Colosseum.",
     longDescription: "A memorable Rome stay with elegant rooms, historic surroundings and walking distance to famous landmarks.",
-    amenities: ["Free Wi-Fi", "Breakfast", "City View"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Double Room", available: 4, maxGuests: 2 },
       { type: "View Suite", available: 2, maxGuests: 3 },
@@ -212,7 +212,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1531572753322-ad063cecc140",
     shortDescription: "Comfortable suites near Vatican City.",
     longDescription: "Relaxing suites with comfortable rooms, helpful service and good access to museums, churches and public transport.",
-    amenities: ["Free Wi-Fi", "Garden", "Breakfast"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Comfort Suite", available: 3, maxGuests: 2 },
       { type: "Family Suite", available: 2, maxGuests: 4 },
@@ -228,7 +228,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b",
     shortDescription: "Affordable apartments for exploring Rome.",
     longDescription: "Simple apartments with kitchen access and a practical location for travelers who want independence during their stay.",
-    amenities: ["Free Wi-Fi", "Kitchen", "Air Conditioning"],
+    amenities: ["Free Wi-Fi", "Air Conditioning"],
     rooms: [
       { type: "Studio Apartment", available: 5, maxGuests: 2 },
       { type: "Two Bedroom Apartment", available: 1, maxGuests: 5 },
@@ -244,7 +244,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
     shortDescription: "Boutique hotel near Rome's old squares.",
     longDescription: "A small and stylish hotel with warm interiors, comfortable rooms and easy walking distance to historic piazzas.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Bar"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Classic Room", available: 4, maxGuests: 2 },
       { type: "Superior Room", available: 2, maxGuests: 3 },
@@ -280,7 +280,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1583422409516-2895a77efded",
     shortDescription: "Modern apartments close to the beach.",
     longDescription: "Bright apartments with kitchen access, modern design and a great location for combining city sightseeing with beach time.",
-    amenities: ["Free Wi-Fi", "Kitchen", "Beach Access"],
+    amenities: ["Free Wi-Fi"],
     rooms: [
       { type: "Studio Apartment", available: 4, maxGuests: 2 },
       { type: "Sea View Apartment", available: 2, maxGuests: 4 },
@@ -312,7 +312,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216",
     shortDescription: "Simple guesthouse near Park Güell.",
     longDescription: "An affordable and relaxed guesthouse with friendly service and good transport links into the city center.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Garden"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Single Room", available: 4, maxGuests: 1 },
       { type: "Double Room", available: 5, maxGuests: 2 },
@@ -328,7 +328,7 @@ export const destinations = [
     image: "https://images.unsplash.com/photo-1507615260505-3e0b5c8a95f9",
     shortDescription: "Boutique stay near La Rambla.",
     longDescription: "A convenient and stylish hotel close to markets, restaurants, nightlife and many central Barcelona attractions.",
-    amenities: ["Free Wi-Fi", "Breakfast", "Bar"],
+    amenities: ["Free Wi-Fi", "Breakfast"],
     rooms: [
       { type: "Classic Room", available: 5, maxGuests: 2 },
       { type: "Balcony Room", available: 2, maxGuests: 3 },

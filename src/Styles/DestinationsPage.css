@@ -183,3 +183,19 @@
     border-right-color: var(--border);
   }
 }
+
+/*------------------------------*/
+/*--------Destination Search----*/
+/*------------------------------*/
+.destinationSearch {
+  position: relative;
+  min-width: 180px;
+}
+.destinationSearch input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #071b3a;
+  width: 160px;
+}
