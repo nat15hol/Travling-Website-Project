@@ -1,7 +1,7 @@
-import SearchLandingPage from "./pages/SearchLandingPage";
+import HomePage from "./Pages/homePage";
 
 function App() {
-  return <SearchLandingPage />;
+  return <HomePage />;
 }
 
 export default App;
