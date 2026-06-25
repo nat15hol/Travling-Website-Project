@@ -1,13 +1,25 @@
 import { useState } from "react";
+import "../Styles/buttons.css";
+import "../Styles/global.css";
 export default function Login({ setIsLoggedIn, setCurrentPage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-  function handleLogin() {
-  if (setIsLoggedIn) {
+function handleLogin() {
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+  const match = users.find(
+    (u) => u.username === username && u.password === password
+  );
+
+  if (match) {
     setIsLoggedIn(true);
+    setCurrentPage("home"); // om ni har en sån
+  } else {
+    alert("Wrong username or password");
   }
-  }
+}
 
   return (
     <div className="search-page">
@@ -38,7 +50,7 @@ export default function Login({ setIsLoggedIn, setCurrentPage }) {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button onClick={handleLogin}>
+          <button className="button-primary" onClick={handleLogin}>
             Log in
           </button>
 
@@ -46,7 +58,7 @@ export default function Login({ setIsLoggedIn, setCurrentPage }) {
   New user?
 </p>
 
-<button onClick={() => setCurrentPage("signup")}>
+<button className="button-primary"onClick={() => setCurrentPage("signup")}>
   Create Account
 </button>
 

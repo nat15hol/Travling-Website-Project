@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../Styles/Auth.css";
+import "../Styles/buttons.css";
+import "../Styles/global.css";
 
-export default function Signup({ setCurrentPage }) {
+export default function SignupPage({ setCurrentPage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,12 +15,20 @@ export default function Signup({ setCurrentPage }) {
       return;
     }
 
-    localStorage.setItem(
-      username,
-      JSON.stringify({ password })
-    );
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    alert("Account created!");
+  const newUser = {
+    username,
+    email,
+    password
+  };
+
+  users.push(newUser);
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Account created!");
+  setCurrentPage("login"); // valfritt men bra UX
   }
 
   return (
@@ -46,7 +56,7 @@ export default function Signup({ setCurrentPage }) {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
@@ -63,12 +73,12 @@ export default function Signup({ setCurrentPage }) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <button onClick={() => setCurrentPage("signup")}>
+          <button className="button-primary" onClick={handleSignup}>
             Create Account
           </button>
-          <button onClick={() => setCurrentPage("login")}>
-  Back to Login
-</button>
+          <button className="button-primary" onClick={() => setCurrentPage("login")}>
+            Back to Login
+          </button>
 
         </div>
 
