@@ -1,10 +1,59 @@
-export default function Login() {
+import { useState } from "react";
+export default function Login({ setIsLoggedIn, setCurrentPage }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleLogin() {
+  if (setIsLoggedIn) {
+    setIsLoggedIn(true);
+  }
+  }
+
   return (
-    <div>
-      <h1>Login</h1>
-      <input placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button>Log in</button>
+    <div className="search-page">
+
+      <header className="hero">
+
+        <nav className="navbar">
+          <h2>✈ Wanderlust</h2>
+        </nav>
+
+        <div className="heroText">
+          <h1>Welcome back</h1>
+          <p>Please log in to continue</p>
+        </div>
+
+        <div className="loginBox">
+
+          <input
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button onClick={handleLogin}>
+            Log in
+          </button>
+
+          <p>
+  New user?
+</p>
+
+<button onClick={() => setCurrentPage("signup")}>
+  Create Account
+</button>
+
+        </div>
+
+      </header>
+
     </div>
   );
 }

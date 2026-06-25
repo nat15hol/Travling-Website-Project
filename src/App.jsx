@@ -1,12 +1,27 @@
-
-import SearchLandingPage from "./pages/SearchLandingPage";
+import { useState } from "react";
 import Login from "./Pages/Login";
-
+import Signup from "./Pages/Signup";
+import SearchLandingPage from "./Pages/SearchLandingPage";
 
 function App() {
-  const showLogin = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentPage, setCurrentPage] = useState("login");
 
-  return showLogin ? <Login /> : <SearchLandingPage />;
+  if (isLoggedIn) {
+    return <SearchLandingPage />;
+  }
+
+  if (currentPage === "signup") {
+    return <Signup setCurrentPage={setCurrentPage} />;
+  }
+
+  return (
+    <Login
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+    />
+  );
 }
 
 export default App;
+
