@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../Styles/SearchLandingPage.css";
 import { destinations } from "../data/destinations";
 
-function SearchLandingPage() {
+function SearchLandingPage({ setCurrentPage }) {
 
   function handleSearch() {
   setSearchedCity(searchText);
@@ -24,7 +24,14 @@ function SearchLandingPage() {
 
         <nav className="navbar">
           <h2>✈ Wanderlust</h2>
-          <button>Access Account</button>
+
+          <button onClick={() => {
+            console.log("clicked");
+            setCurrentPage("login");
+          }}>
+            Access Account
+          </button>
+          
         </nav>
 
         <div className="heroText">
