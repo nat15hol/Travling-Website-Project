@@ -75,6 +75,7 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border: 3px solid #0067e6;
 }
 .searchBox > div {
   min-width: 140px;
@@ -83,6 +84,19 @@
   display: block;
   color: #6b7890;
   font-size: 14px;
+}
+.guestSelector {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 8px;
+}
+.guestSelector span {
+  grid-column: 1 / -1;
+}
+.guestSelector button {
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
 
