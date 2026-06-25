@@ -1,16 +1,27 @@
 import { useState } from "react";
 import Login from "./Pages/Login";
-import SearchLandingPage from "./pages/SearchLandingPage";
-import DestinationsPage from "./pages/DestinationsPage";
+import Signup from "./Pages/Signup";
+import SearchLandingPage from "./Pages/SearchLandingPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentPage, setCurrentPage] = useState("login");
 
-  return isLoggedIn ? (
-    <SearchLandingPage />
-  ) : (
-    <Login setIsLoggedIn={setIsLoggedIn} />
+  if (isLoggedIn) {
+    return <SearchLandingPage />;
+  }
+
+  if (currentPage === "signup") {
+    return <Signup setCurrentPage={setCurrentPage} />;
+  }
+
+  return (
+    <Login
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+    />
   );
 }
 
 export default App;
+

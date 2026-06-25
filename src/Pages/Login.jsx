@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Login({ setIsLoggedIn }) {
+export default function Login({ setIsLoggedIn, setCurrentPage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -41,6 +41,14 @@ export default function Login({ setIsLoggedIn }) {
           <button onClick={handleLogin}>
             Log in
           </button>
+
+          <p>
+  New user?
+</p>
+
+<button onClick={() => setCurrentPage("signup")}>
+  Create Account
+</button>
 
         </div>
 
