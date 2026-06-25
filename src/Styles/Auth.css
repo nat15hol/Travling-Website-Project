@@ -1,0 +1,16 @@
+.loginBox input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 90%;
+}
+.loginBox button {
+  margin-top: 10px;
+}
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
