@@ -3,30 +3,34 @@ import "../Styles/DestinationsPage.css";
 import { destinations } from "../data/destinations";
 
 export default function DestinationsPage() {
+  const [searchText, setSearchText] = useState("");
 
+  function handleSearch() {
+  setSearchedCity(searchText);
+  setShowSuggestions(false);
+  }
+
+  const destinationSuggestions = [...new Set(destinations.map((destination) => destination.city))];
   return (
     <>
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
-          {/* <img src={heroImg} className="base" width="170" height="179" alt="" /> */}
-        </div>
-        <div>
         </div>
       </div>
 
-      <div className="ticks"></div>
-
       <section id="next-steps">
-        <div id="docs" style={{backgroundColor: "lightblue", marginLeft: 60}}>
+        <div id="docs" style={{backgroundColor: "lightblue"}}>
           <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
-            A map here?
+            A .map() here? Scroll horizontally.
+            
           </div>
 
           <div style={{backgroundColor: "gray", alignContent: "center", textAlign: "center", height: "300px", color: "white"}}>
-            Filter options box
+            { /* Filter options box */ }
+
           </div>
         </div>
-        <div style={{flex: "1 1 0", flexDirection: "column", marginLeft: 275}}>
+        <div style={{flex: "1 1 0", flexDirection: "column"}}>
           <div style={{backgroundColor: "green"}}>
 
           </div>
