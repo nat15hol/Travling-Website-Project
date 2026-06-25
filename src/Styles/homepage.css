@@ -11,10 +11,16 @@
 /* HERO */
 
 .hero {
-  height: 650px;
-  padding: 30px;
-  background-color: #d9d9d9;
+  min-height: 380px;
+  background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("https://images.unsplash.com/photo-1537996194471-e657df975ab4");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 30px 50px;
+  position: relative;
 }
+
 
 .navbar {
   display: flex;
@@ -71,6 +77,8 @@
   height: 70px;
 
   background: white;
+  color: #222;
+
   border: 2px solid #ccc;
   border-radius: 10px;
 
@@ -80,6 +88,12 @@
 
   cursor: pointer;
   font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.guestDisplay:hover {
+  border-color: #0077ff;
 }
 
 .guestDisplay:hover {
@@ -181,19 +195,133 @@
 }
 
 .destinationCard {
-  width: 260px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 15px;
+  width: 300px;
+
+  background: white;
+  border-radius: 15px;
+
+  padding: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.3s ease;
+
+  cursor: pointer;
 }
 
-.imagePlaceholder {
-  height: 180px;
-  border: 1px solid #999;
+.destinationCard:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.destinationImage {
+  width: 100%;
+  height: 200px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+.cardContent {
+  padding: 15px 5px 5px;
+}
+
+.cardContent h3 {
+  font-size: 1.25rem;
+
+  margin-bottom: 8px;
+
+  height: 60px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.location {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #f5b301;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: #555;
+
+  line-height: 1.5;
+
+  height: 48px;
+
+  overflow: hidden;
+
+  margin-bottom: 18px;
+}
+
+.price {
+  display: block;
+
+  text-align: center;
+
+  font-size: 1rem;
+
+  margin-bottom: 15px;
+}
+
+.price strong {
+  color: #0077ff;
+
+  font-size: 1.3rem;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 15px;
+}
+
+.viewBtn {
+  width: 170px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0077ff;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+}
+
+.viewBtn:hover {
+  background: #005fd1;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 18px rgba(0, 119, 255, 0.35);
+}
+
+.viewBtn:active {
+  transform: scale(0.97);
+}
+
+.destinationImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+  border-radius: 12px 12px 0 0;
 
   margin-bottom: 15px;
 }
@@ -225,6 +353,8 @@
   height: 70px;
 
   background: white;
+  color: #222;
+
   border: 2px solid #ccc;
   border-radius: 10px;
 

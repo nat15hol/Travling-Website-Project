@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Styles/homepage.css";
 
+import { destinations } from "../data/destinations";
+
 
 
 function HomePage() {
@@ -238,20 +240,44 @@ function HomePage() {
                 <h2>Recommended Destinations</h2>
 
                 <div className="cardContainer">
-                    {[1, 2, 3, 4, 5, 6].map((item) => (
+                    {destinations.slice(0, 5).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={item}
+                            key={destination.id}
                         >
-                            <div className="imagePlaceholder">
-                                Image
+                            <img
+                                src={destination.image}
+                                alt={destination.name}
+                                className="destinationImage"
+                            />
+
+                            <div className="cardContent">
+
+                                <h3>{destination.name}</h3>
+
+                                <p className="location">
+                                    📍 {destination.city}, {destination.country}
+                                </p>
+
+                                <p className="rating">
+                                    {"⭐".repeat(destination.rating)}
+                                </p>
+
+                                <p className="description">
+                                    {destination.shortDescription}
+                                </p>
+
+                                <p className="price">
+                                    From <strong>${destination.pricePerNight}</strong>/night
+                                </p>
+
+                                <div className="cardFooter">
+                                    <button className="viewBtn">
+                                        View
+                                    </button>
+                                </div>
+
                             </div>
-
-                            <h3>Destination Name</h3>
-
-                            <p>
-                                Short destination description
-                            </p>
                         </div>
                     ))}
                 </div>
@@ -263,54 +289,77 @@ function HomePage() {
                 <h2>Popular Destinations</h2>
 
                 <div className="cardContainer">
-                    {[1, 2, 3, 4, 5, 6].map((item) => (
+                    {destinations.slice(6, 11).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={item}
+                            key={destination.id}
                         >
-                            <div className="imagePlaceholder">
-                                Image
+                            <img
+                                src={destination.image}
+                                alt={destination.name}
+                                className="destinationImage"
+                            />
+
+                            <div className="cardContent">
+                                <h3>{destination.name}</h3>
+
+                                <p className="location">
+                                    📍 {destination.city}, {destination.country}
+                                </p>
+
+                                <p className="rating">
+                                    {"⭐".repeat(destination.rating)}
+                                </p>
+
+                                <p className="description">
+                                    {destination.shortDescription}
+                                </p>
+
+                                <p className="price">
+                                    From <strong>${destination.pricePerNight}</strong>/night
+                                </p>
+
+                                <div className="cardFooter">
+                                    <button className="viewBtn">
+                                        View
+                                    </button>
+                                </div>
                             </div>
-
-                            <h3>Destination Name</h3>
-
-                            <p>
-                                Short destination description
-                            </p>
                         </div>
                     ))}
+
                 </div>
             </section>
 
-            {/* FOOTER */}
+                    {/* FOOTER */}
 
-            <footer className="footer">
-                <div>
-                    <h3>Wanderlust</h3>
-                    <p>Explore. Dream. Discover.</p>
-                </div>
+                    <footer className="footer">
+                        <div>
+                            <h3>Wanderlust</h3>
+                            <p>Explore. Dream. Discover.</p>
+                        </div>
 
-                <div>
-                    <h4>Explore</h4>
-                    <p>Destinations</p>
-                    <p>Hotels</p>
-                    <p>Flights</p>
-                </div>
+                        <div>
+                            <h4>Explore</h4>
+                            <p>Destinations</p>
+                            <p>Hotels</p>
+                            <p>Flights</p>
+                        </div>
 
-                <div>
-                    <h4>Company</h4>
-                    <p>About Us</p>
-                    <p>Contact</p>
-                </div>
+                        <div>
+                            <h4>Company</h4>
+                            <p>About Us</p>
+                            <p>Contact</p>
+                        </div>
 
-                <div>
-                    <h4>Support</h4>
-                    <p>Help Center</p>
-                    <p>Privacy Policy</p>
+                        <div>
+                            <h4>Support</h4>
+                            <p>Help Center</p>
+                            <p>Privacy Policy</p>
+                        </div>
+                    </footer>
                 </div>
-            </footer>
-        </div>
-    );
+                );
 }
 
-export default HomePage;
+                export default HomePage;
