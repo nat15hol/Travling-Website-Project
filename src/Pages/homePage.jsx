@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../Styles/homepage.css";
 
 import { destinations } from "../data/destinations";
 
+import SearchBar from "../Components/SearchBar";
 
 
-function HomePage() {
+
+function HomePage({setCurrentPage, setSearchData}) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -58,178 +59,11 @@ function HomePage() {
 
                 <div className="heroContent">
 
-                    <div className="searchOptions">
-
-                        <div className="dateSelector">
-
-                            <div
-                                className="dateBox"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-
-                                    setIsCheckInOpen(!isCheckInOpen);
-                                    setIsCheckOutOpen(false);
-                                    setShowGuests(false);
-                                }}
-                            >
-                                {checkInDate
-                                    ? checkInDate.toLocaleDateString()
-                                    : "Check In ▼"}
-                            </div>
-
-                            {isCheckInOpen && (
-                                <div
-                                    className="calendarDropdown"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <DatePicker
-                                        selected={checkInDate}
-                                        onChange={(date) => {
-                                            setCheckInDate(date);
-                                            setIsCheckInOpen(false);
-                                        }}
-                                        inline
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="dateSelector">
-
-                            <div
-                                className="dateBox"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-
-                                    setIsCheckOutOpen(!isCheckOutOpen);
-                                    setIsCheckInOpen(false);
-                                    setShowGuests(false);
-                                }}
-                            >
-                                {checkOutDate
-                                    ? checkOutDate.toLocaleDateString()
-                                    : "Check Out ▼"}
-                            </div>
-
-                            {isCheckOutOpen && (
-                                <div
-                                    className="calendarDropdown"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <DatePicker
-                                        selected={checkOutDate}
-                                        minDate={checkInDate}
-                                        onChange={(date) => {
-                                            setCheckOutDate(date);
-                                            setIsCheckOutOpen(false);
-                                        }}
-                                        inline
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-
-
-                        <div className="guestSelector">
-                            <div
-                                className="guestDisplay"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-
-                                    setShowGuests(!showGuests);
-                                    setIsCheckInOpen(false);
-                                    setIsCheckOutOpen(false);
-                                }}
-                            >
-                                {adults === 0 && children === 0
-                                    ? "Guests ▼"
-                                    : `${adults} Adult${adults !== 1 ? "s" : ""}${children > 0
-                                        ? `, ${children} Child${children !== 1 ? "ren" : ""
-                                        }`
-                                        : ""
-                                    } ▼`}
-                            </div>
-
-                            {showGuests && (
-                                <div
-                                    className="guestDropdown"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-
-                                    <div className="guestRow">
-                                        <strong>Adults</strong>
-
-                                        <div className="counter">
-                                            <button
-                                                onClick={() =>
-                                                    setAdults(Math.max(0, adults - 1))
-                                                }
-                                            >
-                                                -
-                                            </button>
-
-                                            <span>{adults}</span>
-
-                                            <button
-                                                onClick={() =>
-                                                    setAdults(adults + 1)
-                                                }
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="guestRow">
-                                        <strong>Children</strong>
-
-                                        <div className="counter">
-                                            <button
-                                                onClick={() =>
-                                                    setChildren(
-                                                        Math.max(0, children - 1)
-                                                    )
-                                                }
-                                            >
-                                                -
-                                            </button>
-
-                                            <span>{children}</span>
-
-                                            <button
-                                                onClick={() =>
-                                                    setChildren(children + 1)
-                                                }
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        className="doneBtn"
-                                        onClick={() =>
-                                            setShowGuests(false)
-                                        }
-                                    >
-                                        Done
-                                    </button>
-
-                                </div>
-                            )}
-                        </div>
-
-                    </div>
-
-                    <div className="searchBar">
-                        <input
-                            type="text"
-                            placeholder="Where are you going?"
-                        />
-
-                        <button>Search</button>
-                    </div>
+                    {/*---This is the New Search bar---*/}
+                    <SearchBar onSearch={(city, guests, checkInDate, checkOutDate) => 
+                    { setSearchData({city: city, guests: guests, checkInDate: checkInDate, checkOutDate: checkOutDate, });
+                    setCurrentPage("search");}}
+                    />
 
                 </div>
             </header>
