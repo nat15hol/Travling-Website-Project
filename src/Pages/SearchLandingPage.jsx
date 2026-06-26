@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../Styles/SearchLandingPage.css";
 import { destinations } from "../data/destinations";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 function SearchLandingPage({ setCurrentPage }) {
 
@@ -59,30 +61,49 @@ function SearchLandingPage({ setCurrentPage }) {
     return matchesCity && hasRoomForGuests && matchesPrice && matchesRating && matchesAmenities;
   });
 
+  /*-------------------------------*/ 
+  /*--------Location Data-------------*/ 
+  /*-------------------------------*/ 
+  const cityHeroInfo = {
+  London: {
+    title: "London, United Kingdom",
+    text: "Explore historic streets, world-class museums, lively markets and iconic landmarks.",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad",
+  },
+  Paris: {
+    title: "Paris, France",
+    text: "Discover romantic streets, famous cafés, art museums and unforgettable city views.",
+    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+  },
+  Rome: {
+    title: "Rome, Italy",
+    text: "Walk through ancient history, beautiful piazzas, classic architecture and Italian food culture.",
+    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5",
+  },
+  Barcelona: {
+    title: "Barcelona, Spain",
+    text: "Enjoy colorful architecture, beaches, tapas, nightlife and Mediterranean city life.",
+    image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4",
+  },
+  };
+
+  const currentHero = cityHeroInfo[searchedCity] || cityHeroInfo.London;
+
   return (
 
     <div className="search-page">
 
-      <header className="hero">
+      <Header setCurrentPage={setCurrentPage} />
 
-        <nav className="navbar">
-          <h2>✈ Wanderlust</h2>
+      <header className="hero" style=
+      {{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})`,}}>
 
-          <button onClick={() => {
-            console.log("clicked");
-            setCurrentPage("login");
-          }}>
-            Access Account
-          </button>
-          
-        </nav>
+      <div className="heroText">
+        <h1>{currentHero.title}</h1>
+        <p>{currentHero.text}</p>
+      </div>
 
-        <div className="heroText">
-          <h1>Bali, Indonesia</h1>
-          <p>Discover tropical paradise with stunning beaches, rich culture, and unforgettable experiences.</p>
-        </div>
-
-        <div className="searchBox">
+      <div className="searchBox">
 
         <div className="destinationSearch">
           <span>Destination</span>
@@ -128,7 +149,7 @@ function SearchLandingPage({ setCurrentPage }) {
         </div>
 
         <button onClick={handleSearch}>Search →</button>
-        </div>
+      </div>
 
       </header>
 
@@ -214,6 +235,8 @@ function SearchLandingPage({ setCurrentPage }) {
                   ))}
         </section>
       </main>
+
+      <Footer />
 
     </div>
   );
