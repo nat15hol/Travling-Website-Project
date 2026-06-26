@@ -7,10 +7,7 @@ import SearchBar from '../Components/SearchBar';
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 
-export default function DestinationsPage({ setCurrentPage, searchData }) {
-  const [hotel, setHotel] = useState("[Hotel]");
-  const [city, setCity] = useState("[City]");
-  const [country, setCountry] = useState("[Country]");
+export default function DestinationsPage({ setCurrentPage, name, image, city, country }) {
 
   return (
     <>
@@ -22,7 +19,7 @@ export default function DestinationsPage({ setCurrentPage, searchData }) {
       <section id="next-steps">
         <div id="docs" style={{backgroundColor: "lightblue"}}>
           <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
-            { `${hotel} in ${city}, ${country}` }
+            { `${name} in ${city}, ${country}` }
             
           </div>
 

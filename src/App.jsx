@@ -23,6 +23,9 @@ function App() {
     
     case "search":
       return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />;
+
+    case "destination":
+      return <DestinationsPage setCurrentPage={setCurrentPage} />
     
     case "login":
       return <LoginPage setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />;

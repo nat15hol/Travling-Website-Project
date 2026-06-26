@@ -34,8 +34,10 @@ function HomePage({setCurrentPage, setSearchData}) {
         };
     }, []);
 
-
-
+    const [name, setName] = useState("[Hotel]");
+    const [image, setImage] = useState();
+    const [city, setCity] = useState("[City]");
+    const [country, setCountry] = useState("[Country]");
 
     return (
         <div className="homepage">
@@ -78,6 +80,10 @@ function HomePage({setCurrentPage, setSearchData}) {
                         <div
                             className="destinationCard"
                             key={destination.id} onClick={() => {
+                                setName(destination.name);
+                                setImage(destination.image);
+                                setCity(destination.city);
+                                setCountry(destination.country);
                                 setCurrentPage("destination");
                             }}
                         >
