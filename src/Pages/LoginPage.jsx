@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 export default function Login({ setIsLoggedIn, setCurrentPage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +25,7 @@ function handleLogin() {
 
   return (
     <div className="search-page">
-
+      <Header setCurrentPage={setCurrentPage} />
       <header className="hero">
 
         <nav className="navbar">
@@ -65,7 +67,7 @@ function handleLogin() {
         </div>
 
       </header>
-
+      <Footer />
     </div>
   );
 }
