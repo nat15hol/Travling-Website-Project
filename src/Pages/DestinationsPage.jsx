@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import "../Styles/DestinationsPage.css";
 import { destinations } from "../data/destinations";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import SearchBar from '../Components/SearchBar';
+import "../Styles/buttons.css";
+import "../Styles/global.css";
 
-export default function DestinationsPage() {
-  const [searchText, setSearchText] = useState("");
+export default function DestinationsPage({ setCurrentPage, searchData }) {
+  const [hotel, setHotel] = useState("[Hotel]");
+  const [city, setCity] = useState("[City]");
+  const [country, setCountry] = useState("[Country]");
 
-  function handleSearch() {
-  setSearchedCity(searchText);
-  setShowSuggestions(false);
-  }
-
-  const destinationSuggestions = [...new Set(destinations.map((destination) => destination.city))];
   return (
     <>
       <div style={{backgroundColor: "orange" }}>
@@ -21,7 +22,7 @@ export default function DestinationsPage() {
       <section id="next-steps">
         <div id="docs" style={{backgroundColor: "lightblue"}}>
           <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
-            A .map() here? Scroll horizontally.
+            { `${hotel} in ${city}, ${country}` }
             
           </div>
 

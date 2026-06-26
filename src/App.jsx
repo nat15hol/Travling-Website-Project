@@ -2,6 +2,7 @@ import { useState } from "react";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
+import DestinationsPage from "./Pages/DestinationsPage";
 import HomePage from "./Pages/homePage";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   }
 
   if (currentPage === "search") { return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />; }
+  if (currentPage === "destination") { return <DestinationsPage setCurrentPage={setCurrentPage} />; }
 
   return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData}/>;
 }

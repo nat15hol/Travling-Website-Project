@@ -77,7 +77,9 @@ function HomePage({setCurrentPage, setSearchData}) {
                     {destinations.slice(0, 5).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}
