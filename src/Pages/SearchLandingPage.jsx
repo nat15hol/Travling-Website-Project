@@ -183,10 +183,7 @@ function SearchLandingPage({ setCurrentPage }) {
 
             <button className="filterButton" onClick={handleFilterResults}>Show results</button>
 
-<<<<<<< HEAD
             <button className="button-primary">Show results</button>
-=======
->>>>>>> 94533c24bbed49d65a66b533e7ebae6885e03ff6
           </div>
         </aside>
 
