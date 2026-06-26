@@ -21,11 +21,6 @@
   padding: 30px 50px;
   position: relative;
 }
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .heroText {
   margin-top: 70px;
   max-width: 400px;
@@ -43,7 +38,6 @@
 /*------------------------------*/
 /*--------Buttons---------------*/
 /*------------------------------*/
-.navbar button,
 .searchBox button,
 .resultsHeader button,
 .priceBox button,
