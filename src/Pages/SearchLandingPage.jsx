@@ -3,24 +3,22 @@ import "../Styles/SearchLandingPage.css";
 import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import SearchBar from "../Components/SearchBar";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 
-function SearchLandingPage({ setCurrentPage }) {
+function SearchLandingPage({ setCurrentPage, searchData }) {
 
   /*-------------------------------*/ 
   /*--------Search bar-------------*/ 
   /*-------------------------------*/ 
-  const [searchText, setSearchText] = useState("London");
-  const [searchedCity, setSearchedCity] = useState("London");
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const availableCities = [...new Set(destinations.map((destination) => destination.city))];
-  const filteredSuggestions = availableCities.filter((city) => city.toLowerCase().startsWith(searchText.toLowerCase()));
+  const [searchedCity, setSearchedCity] = useState(searchData.city);
+  const [searchedGuestCount, setSearchedGuestCount] = useState(searchData.guests);
 
-  const [guestCount, setGuestCount] = useState(2);
-  const [searchedGuestCount, setSearchedGuestCount] = useState(2);
-
-  function handleSearch() { setSearchedCity(searchText); setShowSuggestions(false); setSearchedGuestCount(guestCount); }
+  function handleSearch(city, guests) {
+  setSearchedCity(city);
+  setSearchedGuestCount(guests);
+}
 
   /*-------------------------------*/ 
   /*--------Filter Options-------------*/ 
@@ -88,8 +86,9 @@ function SearchLandingPage({ setCurrentPage }) {
     image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4",
   },
   };
-
-  const currentHero = cityHeroInfo[searchedCity] || cityHeroInfo.London;
+  
+  const matchedCity = Object.keys(cityHeroInfo).find((city) => city.toLowerCase() === searchedCity.toLowerCase()) || "London";
+  const currentHero = cityHeroInfo[matchedCity] || cityHeroInfo.London;
 
   return (
 
@@ -105,53 +104,7 @@ function SearchLandingPage({ setCurrentPage }) {
         <p>{currentHero.text}</p>
       </div>
 
-      <div className="searchBox">
-
-        <div className="destinationSearch">
-          <span>Destination</span>
-
-          <input
-          type="text"
-          value={searchText}
-          onChange={(event) => {setSearchText(event.target.value); setShowSuggestions(true);}}
-          onFocus={() => setShowSuggestions(true)}
-          onKeyDown={(event) => { if (event.key === "Enter") { handleSearch(); }}}
-          placeholder="Search city..."
-          />
-
-          {showSuggestions && searchText && filteredSuggestions.length > 0 && (
-          <div className="suggestions">
-          {filteredSuggestions.map((city) => (
-          <button key={city} type="button" onClick={() => { setSearchText(city); setSearchedCity(city); setShowSuggestions(false); }}>
-          {city}
-          </button>
-          ))}
-          </div>
-          )}
-
-        </div>
-
-        <div>
-          <span>Check in</span>
-          <strong>May 20, 2025</strong>
-        </div>
-
-        <div>
-          <span>Check out</span>
-          <strong>May 24, 2025</strong>
-        </div>
-
-        <div className="guestSelector">
-
-        <span>Nr. of ppl</span>
-        <button type="button" onClick={() => setGuestCount(Math.max(1, guestCount - 1))}>-</button>
-        <strong>{guestCount} guests</strong>
-        <button type="button" onClick={() => setGuestCount(guestCount + 1)}>+</button>
-
-        </div>
-
-        <button className="button-primary" onClick={handleSearch}>Search →</button>
-        </div>
+      <SearchBar startCity={searchedCity} startGuests={searchedGuestCount} onSearch={handleSearch}/>
 
       </header>
 
@@ -202,15 +155,14 @@ function SearchLandingPage({ setCurrentPage }) {
               </label>
             ))}
 
-            <button className="filterButton" onClick={handleFilterResults}>Show results</button>
+            <button className="button-primary" onClick={handleFilterResults}>Show results</button>
 
-            <button className="button-primary">Show results</button>
           </div>
         </aside>
 
         <section className="results">
           <div className="resultsHeader">
-            <h2>{filteredDestinations.length} places to stay in {searchedCity}</h2>
+            <h2>{filteredDestinations.length} places to stay in {matchedCity}</h2>
             <button className="button-primary">Sort by: Recommended ˅</button>
           </div>
 
