@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "../Styles/DestinationsPage.css";
 import { destinations } from "../data/destinations";
 
 export default function DestinationsPage() {
@@ -9,27 +10,18 @@ export default function DestinationsPage() {
   setShowSuggestions(false);
   }
 
+  const destinationSuggestions = [...new Set(destinations.map((destination) => destination.city))];
   return (
     <>
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
-          <input style={{width: "200px" }}
-          type="text"
-          value={searchText}
-          onChange={(event) => {setSearchText(event.target.value); setShowSuggestions(true);}}
-          onFocus={() => setShowSuggestions(true)}
-          onKeyDown={(event) => { if (event.key === "Enter") { handleSearch(); }}}
-          placeholder="Search for a city..."
-          />
         </div>
       </div>
-
-      <div className="ticks"></div>
 
       <section id="next-steps">
         <div id="docs" style={{backgroundColor: "lightblue"}}>
           <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
-            { /* A map here? */}
+            A .map() here? Scroll horizontally.
             
           </div>
 

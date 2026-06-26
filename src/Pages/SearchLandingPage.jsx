@@ -3,6 +3,8 @@ import "../Styles/SearchLandingPage.css";
 import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import "../Styles/buttons.css";
+import "../Styles/global.css";
 
 function SearchLandingPage({ setCurrentPage }) {
 
@@ -148,8 +150,8 @@ function SearchLandingPage({ setCurrentPage }) {
 
         </div>
 
-        <button onClick={handleSearch}>Search →</button>
-      </div>
+        <button className="button-primary" onClick={handleSearch}>Search →</button>
+        </div>
 
       </header>
 
@@ -157,7 +159,7 @@ function SearchLandingPage({ setCurrentPage }) {
         <aside className="sidebar">
           <div className="mapBox">
             <p>Map preview</p>
-            <button>View on Google Maps</button>
+            <button className="button-primary">View on Google Maps</button>
           </div>
 
           <div className="filters">
@@ -202,13 +204,14 @@ function SearchLandingPage({ setCurrentPage }) {
 
             <button className="filterButton" onClick={handleFilterResults}>Show results</button>
 
+            <button className="button-primary">Show results</button>
           </div>
         </aside>
 
         <section className="results">
           <div className="resultsHeader">
             <h2>{filteredDestinations.length} places to stay in {searchedCity}</h2>
-            <button>Sort by: Recommended ˅</button>
+            <button className="button-primary">Sort by: Recommended ˅</button>
           </div>
 
           {filteredDestinations.map((destination) => (
@@ -231,6 +234,7 @@ function SearchLandingPage({ setCurrentPage }) {
               <button>Book now</button>
               <small>Free cancellation</small>
             </div>
+            
             </article>
                   ))}
         </section>

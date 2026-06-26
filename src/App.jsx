@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 
 function App() {
@@ -8,15 +8,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState("login");
 
   if (isLoggedIn) {
-    return <SearchLandingPage />;
+    return <SearchLandingPage setCurrentPage={setCurrentPage} />;
   }
 
   if (currentPage === "signup") {
-    return <Signup setCurrentPage={setCurrentPage} />;
+    return <SignupPage setCurrentPage={setCurrentPage} />;
   }
 
   return (
-    <Login
+    <LoginPage
       setIsLoggedIn={setIsLoggedIn}
       setCurrentPage={setCurrentPage}
     />
