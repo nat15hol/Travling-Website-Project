@@ -9,7 +9,7 @@ import SearchBar from "../Components/SearchBar";
 
 
 
-function HomePage({setCurrentPage, setSearchData}) {
+function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -33,11 +33,6 @@ function HomePage({setCurrentPage, setSearchData}) {
             document.removeEventListener("click", handleClickOutside);
         };
     }, []);
-
-    const [name, setName] = useState("[Hotel]");
-    const [image, setImage] = useState();
-    const [city, setCity] = useState("[City]");
-    const [country, setCountry] = useState("[Country]");
 
     return (
         <div className="homepage">
@@ -80,10 +75,12 @@ function HomePage({setCurrentPage, setSearchData}) {
                         <div
                             className="destinationCard"
                             key={destination.id} onClick={() => {
-                                setName(destination.name);
-                                setImage(destination.image);
-                                setCity(destination.city);
-                                setCountry(destination.country);
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
                                 setCurrentPage("destination");
                             }}
                         >
@@ -134,7 +131,15 @@ function HomePage({setCurrentPage, setSearchData}) {
                     {destinations.slice(6, 11).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}

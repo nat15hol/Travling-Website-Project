@@ -11,6 +11,7 @@ export default function DestinationsPage({ setCurrentPage, name, image, city, co
 
   return (
     <>
+    <Header setCurrentPage={setCurrentPage} />
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
         </div>
@@ -28,7 +29,8 @@ export default function DestinationsPage({ setCurrentPage, name, image, city, co
 
           </div>
         </div>
-        <div style={{flex: "1 1 0", flexDirection: "column"}}>
+        <div style={{flex: "0.5 0.5 0", flexDirection: "column"}}>
+          { image != null ? <img src={image} height="15%" /> : "NO IMAGE" }
           <div style={{backgroundColor: "green"}}>
 
           </div>
@@ -40,9 +42,7 @@ export default function DestinationsPage({ setCurrentPage, name, image, city, co
           </div>
         </div>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <Footer />
     </>
   );
 }

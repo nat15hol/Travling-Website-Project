@@ -10,6 +10,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentPage, setCurrentPage] = useState("home");
   const [searchData, setSearchData] = useState({ city: "London", guests: 2, checkInDate: null, checkOutDate: null });
+  const [selectedDestination, setSelectedDestination] = useState({ name: "[Hotel]", image: null, city: "[City]", country: "[Country]" });
 
   // 1. Skydda sidor (t.ex. skicka oinloggade till login om de försöker nå "search")
   if (!isLoggedIn && (currentPage === "search" || currentPage === "home")) {
@@ -19,13 +20,15 @@ function App() {
   // 2. Hantera rendering baserat på currentPage
   switch (currentPage) {
     case "home":
-      return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData} />;
+      return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData} setSelectedDestination={setSelectedDestination} />;
     
     case "search":
       return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />;
 
     case "destination":
-      return <DestinationsPage setCurrentPage={setCurrentPage} />
+      return <DestinationsPage setCurrentPage={setCurrentPage}
+      name={selectedDestination.name} image={selectedDestination.image}
+      city={selectedDestination.city} country={selectedDestination.country} />;
     
     case "login":
       return <LoginPage setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />;
