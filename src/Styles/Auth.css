@@ -2,15 +2,144 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  width: 300px;
-  max-width: 90%;
+  width: 400px;
+  max-width: 100%;
 }
 .loginBox button {
   margin-top: 10px;
 }
 .loginBox {
+  max-width: 270px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  align-items: flex-start;
+}
+
+
+
+
+.button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.button-primary {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+.button-secondary {
+  background: #f5f7ff;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+.button-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.button-row button {
+  flex: 1; /* gör att båda tar exakt samma bredd */
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.auth-subtitle {
+  margin-bottom: 16px;
+}
+h1 {
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+.icon {
+  width: 24px;
+  min-width: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+.message {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 24px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.text {
+  font-size: 0.77rem;
+  margin: 0;
+}
+
+
+
+
+
+.message-area {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.message.warning {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.12);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.message.error {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.message.success {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(22, 163, 74, 0.3);
+}
+
+.message.warning {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.12);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

@@ -1,53 +1,83 @@
 import { useState } from "react";
+import { signup, getUsers } from "../Services/authService";
 import "../Styles/Auth.css";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import PasswordStatus from "../Components/PasswordStatus";
 
 export default function SignupPage({ setCurrentPage }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  // Hämta alla användare
+  const users = getUsers();
+
+  const usernameTaken =
+    username.trim() !== "" &&
+    users.some((u) => u.username === username.trim());
+
+  const emailTaken =
+    email.trim() !== "" &&
+    users.some((u) => u.email === email.trim());
+
+  // Knappen aktiveras när grundinformationen finns.
+  // Själva valideringen sker i authService.signup().
+  const canSubmit =
+  firstName.trim() !== "" &&
+  lastName.trim() !== "" &&
+  username.trim() !== "" &&
+  email.trim() !== "" &&
+  password.length >= 12 &&
+  password === confirmPassword;
+
   function handleSignup() {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+    const result = signup({
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+      confirmPassword,
+    });
+
+    if (!result.ok) {
+      alert(result.error);
       return;
     }
 
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-  const newUser = {
-    username,
-    email,
-    password
-  };
-
-  users.push(newUser);
-
-  localStorage.setItem("users", JSON.stringify(users));
-
-  alert("Account created!");
-  setCurrentPage("login"); // valfritt men bra UX
+    setCurrentPage("login");
   }
 
   return (
     <div className="search-page">
       <Header setCurrentPage={setCurrentPage} />
+
       <header className="hero">
-
-        <nav className="navbar">
-          <h2>✈ Wanderlust</h2>
-        </nav>
-
-        <div className="heroText">
+        <div className="auth-container">
           <h1>Create Account</h1>
-          <p>Sign up to start exploring destinations</p>
+          <p className="auth-subtitle">
+            Sign up to start exploring destinations
+          </p>
         </div>
 
         <div className="loginBox">
+          <input
+            placeholder="First name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+
+          <input
+            placeholder="Last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
 
           <input
             placeholder="Username"
@@ -76,16 +106,33 @@ export default function SignupPage({ setCurrentPage }) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <button className="button-primary" onClick={handleSignup}>
-            Create Account
-          </button>
-          <button className="button-primary" onClick={() => setCurrentPage("login")}>
-            Back to Login
-          </button>
+          <PasswordStatus
+            password={password}
+            confirmPassword={confirmPassword}
+            username={username}
+            email={email}
+            users={users}
+          />
 
+          <div className="button-row">
+            <button
+              className="button button-primary"
+              onClick={handleSignup}
+              disabled={!canSubmit}
+            >
+              Create Account
+            </button>
+
+            <button
+              className="button button-secondary"
+              onClick={() => setCurrentPage("login")}
+            >
+              Back to Login
+            </button>
+          </div>
         </div>
-
       </header>
+
       <Footer />
     </div>
   );

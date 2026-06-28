@@ -6,7 +6,7 @@ function Header({ isLoggedIn, setIsLoggedIn, setCurrentPage }) {
   
   const handleSignOut = () => {
     setIsLoggedIn(false);
-    setCurrentPage("home"); // Skickar användaren till hemisdan vid utloggning
+    setCurrentPage("home");
   };
 
   return (

@@ -7,7 +7,12 @@ import SearchBar from "../Components/SearchBar";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 
-function SearchLandingPage({ setCurrentPage, searchData }) {
+function SearchLandingPage({
+  isLoggedIn,
+  setIsLoggedIn,
+  setCurrentPage,
+  searchData,
+}) {
 
   /*-------------------------------*/ 
   /*--------Search bar-------------*/ 
@@ -94,7 +99,11 @@ function SearchLandingPage({ setCurrentPage, searchData }) {
 
     <div className="search-page">
 
-      <Header setCurrentPage={setCurrentPage} />
+      <Header
+        isLoggedIn={isLoggedIn}
+       setIsLoggedIn={setIsLoggedIn}
+       setCurrentPage={setCurrentPage}
+      />
 
       <header className="hero" style=
       {{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})`,}}>
