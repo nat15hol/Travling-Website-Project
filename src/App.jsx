@@ -4,6 +4,10 @@ import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
 
+import DestinationsPage from "./Pages/DestinationsPage";
+
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentPage, setCurrentPage] = useState("home");
@@ -16,6 +20,12 @@ function App() {
   }
 
   if (currentPage === "search") { return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />; }
+
+  
+  if (currentPage === "destinations") {
+    return <DestinationsPage />;
+  }
+
 
   return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData}/>;
 }

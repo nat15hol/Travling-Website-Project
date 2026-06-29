@@ -7,7 +7,12 @@ function Header({ setCurrentPage }) {
   return (
     <header className="mainHeader">
       <nav className="mainNavbar">
-        <h2>✈ Wanderlust</h2> {/* Här skall en link till home page vara i framtiden */}
+        <h2
+          className="logo"
+          onClick={() => setCurrentPage("home")}
+        >
+          ✈ Wanderlust
+        </h2>
 
         <div className="headerLinks">
           {isLoggedIn ? (
