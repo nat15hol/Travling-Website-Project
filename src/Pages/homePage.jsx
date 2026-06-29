@@ -14,6 +14,7 @@ function HomePage({
   setIsLoggedIn,
   setCurrentPage,
   setSearchData,
+  setSelectedDestination,
 }) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
@@ -38,9 +39,6 @@ function HomePage({
             document.removeEventListener("click", handleClickOutside);
         };
     }, []);
-
-
-
 
     return (
         <div className="homepage">
@@ -73,7 +71,15 @@ function HomePage({
                     {destinations.slice(0, 5).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}
@@ -122,7 +128,15 @@ function HomePage({
                     {destinations.slice(6, 11).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}
