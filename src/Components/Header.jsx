@@ -12,7 +12,10 @@ function Header({ isLoggedIn, setIsLoggedIn, setCurrentPage }) {
   return (
     <header className="mainHeader">
       <nav className="mainNavbar">
-        <h2 onClick={() => setCurrentPage("home")} style={{ cursor: 'pointer' }}>
+        <h2
+          className="logo"
+          onClick={() => setCurrentPage("home")}
+        >
           ✈ Wanderlust
         </h2>
 

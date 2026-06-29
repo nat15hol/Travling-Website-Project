@@ -8,6 +8,9 @@ import { destinations } from "../data/destinations";
 import SearchBar from "../Components/SearchBar";
 import Header from "../Components/Header";
 
+import Header from "../Components/Header";
+
+import Footer from "../Components/Footer";
 
 function HomePage({
   isLoggedIn,
@@ -50,13 +53,15 @@ function HomePage({
         />
             {/* HERO SECTION */}
             <header className="hero">
+                <Header setCurrentPage={setCurrentPage} />
 
                 <div className="heroContent">
 
                     {/*---This is the New Search bar---*/}
-                    <SearchBar onSearch={(city, guests, checkInDate, checkOutDate) => 
-                    { setSearchData({city: city, guests: guests, checkInDate: checkInDate, checkOutDate: checkOutDate, });
-                    setCurrentPage("search");}}
+                    <SearchBar onSearch={(city, guests, checkInDate, checkOutDate) => {
+                        setSearchData({ city: city, guests: guests, checkInDate: checkInDate, checkOutDate: checkOutDate, });
+                        setCurrentPage("search");
+                    }}
                     />
 
                 </div>
@@ -108,9 +113,16 @@ function HomePage({
                                 </p>
 
                                 <div className="cardFooter">
-                                    <button className="viewBtn">
+                                    {/*  changes below */}
+
+                                    <button
+                                        className="viewBtn"
+                                        onClick={() => setCurrentPage("destinations")}
+                                    >
                                         View
                                     </button>
+                                    {/*-------*/}
+
                                 </div>
 
                             </div>
@@ -164,9 +176,16 @@ function HomePage({
                                 </p>
 
                                 <div className="cardFooter">
-                                    <button className="viewBtn">
+
+                                    {/*  changes below */}
+                                    <button
+                                        className="viewBtn"
+                                        onClick={() => setCurrentPage("destinations")}
+                                    >
                                         View
                                     </button>
+
+                                    {/*-----*/}
                                 </div>
                             </div>
                         </div>
@@ -175,35 +194,12 @@ function HomePage({
                 </div>
             </section>
 
-                    {/* FOOTER */}
+            {/* FOOTER */}
 
-                    <footer className="footer">
-                        <div>
-                            <h3>Wanderlust</h3>
-                            <p>Explore. Dream. Discover.</p>
-                        </div>
+            <Footer />
 
-                        <div>
-                            <h4>Explore</h4>
-                            <p>Destinations</p>
-                            <p>Hotels</p>
-                            <p>Flights</p>
-                        </div>
-
-                        <div>
-                            <h4>Company</h4>
-                            <p>About Us</p>
-                            <p>Contact</p>
-                        </div>
-
-                        <div>
-                            <h4>Support</h4>
-                            <p>Help Center</p>
-                            <p>Privacy Policy</p>
-                        </div>
-                    </footer>
-                </div>
-                );
+        </div>
+    );
 }
 
-                export default HomePage;
+export default HomePage;
