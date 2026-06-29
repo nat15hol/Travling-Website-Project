@@ -12,8 +12,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 
-
-function HomePage({ setCurrentPage, setSearchData }) {
+function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -37,9 +36,6 @@ function HomePage({ setCurrentPage, setSearchData }) {
             document.removeEventListener("click", handleClickOutside);
         };
     }, []);
-
-
-
 
     return (
         <div className="homepage">
@@ -68,7 +64,15 @@ function HomePage({ setCurrentPage, setSearchData }) {
                     {destinations.slice(0, 5).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}
@@ -124,7 +128,15 @@ function HomePage({ setCurrentPage, setSearchData }) {
                     {destinations.slice(6, 11).map((destination) => (
                         <div
                             className="destinationCard"
-                            key={destination.id}
+                            key={destination.id} onClick={() => {
+                                setSelectedDestination({
+                                    name: destination.name,
+                                    image: destination.image,
+                                    city: destination.city,
+                                    country: destination.country,
+                                });
+                                setCurrentPage("destination");
+                            }}
                         >
                             <img
                                 src={destination.image}

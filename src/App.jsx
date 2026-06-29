@@ -3,6 +3,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
+// Importera dina komponenter här...
 
 import DestinationsPage from "./Pages/DestinationsPage";
 
@@ -11,23 +12,38 @@ import DestinationsPage from "./Pages/DestinationsPage";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentPage, setCurrentPage] = useState("home");
-  const [searchData, setSearchData] = useState({ city: "London", guests: 2,checkInDate: null, checkOutDate: null,});
+  const [searchData, setSearchData] = useState({ city: "London", guests: 2, checkInDate: null, checkOutDate: null });
+  const [selectedDestination, setSelectedDestination] = useState({ name: "[Hotel]", image: null, city: "[City]", country: "[Country]" });
 
-  if (!isLoggedIn) {
-    if (currentPage === "signup") { return <SignupPage setCurrentPage={setCurrentPage} />; }
-
-    return ( <LoginPage setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/> );
+  // 1. Skydda sidor (t.ex. skicka oinloggade till login om de försöker nå "search")
+  if (!isLoggedIn && (currentPage === "search" || currentPage === "home")) {
+    return <LoginPage setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />;
   }
 
-  if (currentPage === "search") { return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />; }
+  // 2. Hantera rendering baserat på currentPage
+  switch (currentPage) {
+    case "home":
+      return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData} setSelectedDestination={setSelectedDestination} />;
+    
+    case "search":
+      return <SearchLandingPage setCurrentPage={setCurrentPage} searchData={searchData} />;
 
   
-  if (currentPage === "destinations") {
-    return <DestinationsPage />;
+  
+    case "destination":
+      return <DestinationsPage setCurrentPage={setCurrentPage}
+      name={selectedDestination.name} image={selectedDestination.image}
+      city={selectedDestination.city} country={selectedDestination.country} />;
+    
+    case "login":
+      return <LoginPage setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />;
+    
+    case "signup":
+      return <SignupPage setCurrentPage={setCurrentPage} />;
+    
+    default:
+      return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData} />;
   }
-
-
-  return <HomePage setCurrentPage={setCurrentPage} setSearchData={setSearchData}/>;
 }
 
 export default App;

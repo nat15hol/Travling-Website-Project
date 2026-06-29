@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import "../Styles/DestinationsPage.css";
 import { destinations } from "../data/destinations";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import SearchBar from '../Components/SearchBar';
+import "../Styles/buttons.css";
+import "../Styles/global.css";
 
-export default function DestinationsPage() {
-  const [searchText, setSearchText] = useState("");
+export default function DestinationsPage({ setCurrentPage, name, image, city, country }) {
 
-  function handleSearch() {
-  setSearchedCity(searchText);
-  setShowSuggestions(false);
-  }
-
-  const destinationSuggestions = [...new Set(destinations.map((destination) => destination.city))];
   return (
     <>
+    <Header setCurrentPage={setCurrentPage} />
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
         </div>
@@ -21,7 +20,7 @@ export default function DestinationsPage() {
       <section id="next-steps">
         <div id="docs" style={{backgroundColor: "lightblue"}}>
           <div style={{backgroundColor: "blue", alignContent: "center", textAlign: "center", height: "200px", color: "white"}}>
-            A .map() here? Scroll horizontally.
+            { `${name} in ${city}, ${country}` }
             
           </div>
 
@@ -30,7 +29,8 @@ export default function DestinationsPage() {
 
           </div>
         </div>
-        <div style={{flex: "1 1 0", flexDirection: "column"}}>
+        <div style={{flex: "0.5 0.5 0", flexDirection: "column"}}>
+          { image != null ? <img src={image} height="15%" /> : "NO IMAGE" }
           <div style={{backgroundColor: "green"}}>
 
           </div>
@@ -42,9 +42,7 @@ export default function DestinationsPage() {
           </div>
         </div>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <Footer />
     </>
   );
 }
