@@ -1,0 +1,98 @@
+.confirmationPage {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  color: #071b3a;
+}
+
+.confirmationContainer {
+  max-width: 760px;
+  margin: 60px auto;
+  padding: 0 30px;
+}
+
+.confirmationCard {
+  background: white;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.successIcon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background-color: #1fa463;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.confirmationCard h1 {
+  margin-bottom: 10px;
+}
+
+.confirmationText {
+  color: #6b7890;
+  margin-bottom: 30px;
+}
+
+.confirmationImage {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 25px;
+}
+
+.confirmationSummary {
+  text-align: left;
+}
+
+.confirmationSummary h2 {
+  margin-bottom: 8px;
+}
+
+.confirmationSummary p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.confirmationSummary hr {
+  margin: 22px 0;
+}
+
+.summaryRow,
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.summaryTotal {
+  font-size: 22px;
+  font-weight: bold;
+  border-top: 1px solid #d1d5db;
+  padding-top: 18px;
+  margin-top: 22px;
+}
+
+.confirmationButtons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.confirmationButtons button {
+  flex: 1;
+}
+
+@media (max-width: 700px) {
+  .confirmationButtons {
+    flex-direction: column;
+  }
+}

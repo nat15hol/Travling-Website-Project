@@ -3,6 +3,7 @@
 /*------------------------------*/
 .dateSelector {
   position: relative;
+  cursor: pointer;
 }
 .calendarDropdown {
   position: absolute;
@@ -56,4 +57,18 @@
 .guestSelector button {
   padding: 6px 10px;
   border-radius: 6px;
+}
+.searchError {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  width: 180px;
+  z-index: 1000;
 }

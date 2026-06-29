@@ -1,0 +1,123 @@
+/*-----------------------*/
+/*------Hela sidan-------*/
+/*-----------------------*/
+.bookingPage {
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  color: #071b3a;
+}
+.bookingContainer {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 35px;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 30px;
+}
+.bookingSummary h2,
+.bookingCard h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.bookingSummary,
+.bookingCard {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+.bookingError {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/*-----------------------*/
+/*------Left Column-------*/
+/*-----------------------*/
+.bookingLeftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.bookingImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+}
+.bookingSummary h3 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+.bookingSummary p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.bookingSummary hr {
+  margin: 20px 0;
+}
+.bookingTotal {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+
+
+/*-----------------------*/
+/*------Right Column-------*/
+/*-----------------------*/
+.bookingRightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.formGrid label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  gap: 8px;
+}
+.formGrid input,
+.formGrid textarea {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.formGrid textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.fullWidth {
+  grid-column: 1 / -1;
+}
+.confirmBookingButton {
+  margin-top: 25px;
+  width: 100%;
+}
+
+
+/*-----------------------*/
+/*------Small Screens-------*/
+/*-----------------------*/
+@media (max-width: 900px) {
+  .bookingContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -98,13 +98,11 @@ function SearchLandingPage({
   return (
 
     <div className="search-page">
-
-      <Header
-        isLoggedIn={isLoggedIn}
-       setIsLoggedIn={setIsLoggedIn}
-       setCurrentPage={setCurrentPage}
-      />
-
+<Header
+  isLoggedIn={isLoggedIn}
+  setIsLoggedIn={setIsLoggedIn}
+  setCurrentPage={setCurrentPage}
+/>
       <header className="hero" style=
       {{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})`,}}>
 
