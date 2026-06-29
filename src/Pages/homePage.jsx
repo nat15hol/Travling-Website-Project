@@ -51,7 +51,7 @@ function HomePage({
         />
             {/* HERO SECTION */}
             <header className="hero">
-                <Header setCurrentPage={setCurrentPage} />
+                {/* <Header setCurrentPage={setCurrentPage} /> */}
 
                 <div className="heroContent">
 
