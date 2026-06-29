@@ -94,7 +94,7 @@ function SearchLandingPage({ setCurrentPage, searchData }) {
 
     <div className="search-page">
 
-      <Header setCurrentPage={setCurrentPage} />
+      <Header setCurrentPage={setCurrentPage}/>
 
       <header className="hero" style=
       {{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})`,}}>

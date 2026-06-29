@@ -6,6 +6,7 @@ import { destinations } from "../data/destinations";
 
 function SearchBar({ onSearch, startCity = "London", startGuests = 2 }) {
 
+  const [searchError, setSearchError] = useState("");
   const [searchText, setSearchText] = useState(startCity);
   const [guestCount, setGuestCount] = useState(startGuests);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -17,11 +18,10 @@ function SearchBar({ onSearch, startCity = "London", startGuests = 2 }) {
 
   const availableCities = [...new Set(destinations.map((d) => d.city))];
 
-  const filteredSuggestions = availableCities.filter((city) =>
-    city.toLowerCase().startsWith(searchText.toLowerCase())
-  );
+  const filteredSuggestions = availableCities.filter((city) => city.toLowerCase().startsWith(searchText.toLowerCase()));
 
   useEffect(() => {
+
     function handleClickOutside() {
       setShowSuggestions(false);
       setIsCheckInOpen(false);
@@ -30,35 +30,31 @@ function SearchBar({ onSearch, startCity = "London", startGuests = 2 }) {
 
     document.addEventListener("click", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    return () => { document.removeEventListener("click", handleClickOutside); };
   }, []);
 
   function handleSearch() {
-  if (onSearch) {onSearch(searchText, guestCount, checkInDate, checkOutDate); }
+
+  const matchedCity = availableCities.find((city) => city.toLowerCase() === searchText.trim().toLowerCase());
+  if (!matchedCity) { setSearchError("Please choose a valid destination."); setShowSuggestions(false); return; }
+  setSearchError("");
+  if (onSearch) { onSearch(matchedCity, guestCount, checkInDate, checkOutDate); }
   setShowSuggestions(false);
+
   }
 
   return (
+
     <div className="searchBox" onClick={(event) => event.stopPropagation()}>
+      
       <div className="destinationSearch">
         <span>Destination</span>
 
-        <input
-          type="text"
-          value={searchText}
-          onChange={(event) => {
-            setSearchText(event.target.value);
-            setShowSuggestions(true);
-          }}
-          onFocus={() => setShowSuggestions(true)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleSearch();
-            }
-          }}
-          placeholder="Search city..."
+        <input type="text" 
+          value={searchText} onChange={(event) => { setSearchText(event.target.value); setShowSuggestions(true); }}
+          onFocus={() => setShowSuggestions(true)} onKeyDown={(event) => {
+            if (event.key === "Enter") { handleSearch(); } }} 
+            placeholder="Search city..."
         />
 
         {showSuggestions && searchText && filteredSuggestions.length > 0 && (
@@ -77,6 +73,9 @@ function SearchBar({ onSearch, startCity = "London", startGuests = 2 }) {
             ))}
           </div>
         )}
+
+        {searchError && (<p className="searchError">{searchError}</p>)}  
+
       </div>
 
       <div className="dateSelector">
@@ -141,9 +140,8 @@ function SearchBar({ onSearch, startCity = "London", startGuests = 2 }) {
         </button>
       </div>
 
-      <button className="button-primary" onClick={handleSearch}>
-        Search →
-      </button>
+      <button className="button-primary" onClick={handleSearch}>Search →</button>
+
     </div>
   );
 }
