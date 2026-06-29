@@ -11,37 +11,27 @@ export default function SignupPage({ setCurrentPage }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [email, setEmail] = useState("");
 
-  // Hämta alla användare
   const users = getUsers();
 
-  const usernameTaken =
-    username.trim() !== "" &&
-    users.some((u) => u.username === username.trim());
-
-  const emailTaken =
-    email.trim() !== "" &&
-    users.some((u) => u.email === email.trim());
-
-  // Knappen aktiveras när grundinformationen finns.
-  // Själva valideringen sker i authService.signup().
+  // 🔥 ENKELT: bara basic enable/disable
   const canSubmit =
-  firstName.trim() !== "" &&
-  lastName.trim() !== "" &&
-  username.trim() !== "" &&
-  email.trim() !== "" &&
-  password.length >= 12 &&
-  password === confirmPassword;
+    firstName.trim() !== "" &&
+    lastName.trim() !== "" &&
+    username.trim() !== "" &&
+    email.trim() !== "" &&
+    password.trim() !== "" &&
+    confirmPassword.trim() !== "";
 
   function handleSignup() {
     const result = signup({
       firstName,
       lastName,
-      email,
       username,
+      email,
       password,
       confirmPassword,
     });
