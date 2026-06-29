@@ -1,71 +1,72 @@
 import { useState } from "react";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
+import "../Styles/Auth.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { login } from "../Services/authService";
 export default function Login({ setIsLoggedIn, setCurrentPage }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
 
 function handleLogin() {
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-  const match = users.find(
-    (u) => u.username === username && u.password === password
-  );
-
-  if (match) {
-    setIsLoggedIn(true);
-    setCurrentPage("home"); // om ni har en sån
-  } else {
-    alert("Wrong username or password");
+  if (!username || !password) {
+    alert("Please fill in both fields");
+    return;
   }
+
+  const user = login(username, password);
+
+  if (!user) {
+    alert("Wrong username or password");
+    return;
+  }
+
+  setIsLoggedIn(true);
+  setCurrentPage("home");
 }
 
   return (
     <div className="search-page">
-      <Header setCurrentPage={setCurrentPage} />
+      <Header
+        isLoggedIn={false}
+        setIsLoggedIn={setIsLoggedIn}
+        setCurrentPage={setCurrentPage}
+      />
       <header className="hero">
 
-        <nav className="navbar">
-          <h2>✈ Wanderlust</h2>
-        </nav>
-
-        <div className="heroText">
+        <div className="auth-container">
           <h1>Welcome back</h1>
-          <p>Please log in to continue</p>
-        </div>
+          <p className="auth-subtitle">Sign in to continue</p>
 
-        <div className="loginBox">
+          <div className="loginBox">
 
-          <input
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+            <input
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          <button className="button-primary" onClick={handleLogin}>
-            Log in
-          </button>
+<div className="button-row">
+    <button className="button button-primary" onClick={handleLogin}>
+    Log in
+  </button>
+  <button className="button button-secondary" onClick={() => setCurrentPage("signup")}>
+    Create Account
+  </button>
 
-          <p>
-  New user?
-</p>
 
-<button className="button-primary"onClick={() => setCurrentPage("signup")}>
-  Create Account
-</button>
+</div>
 
-        </div>
-
+          </div>
+          </div>
       </header>
       <Footer />
     </div>

@@ -1,0 +1,131 @@
+.account-page .hero,
+.account-content {
+  padding: 30px 50px;
+}
+
+/* =========================
+   MAIN ROW STRUCTURE
+========================= */
+.profile-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================
+   EDIT ROW (inputs + buttons same line)
+========================= */
+.row-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* inputs grouped together */
+.inputs-inline {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* buttons grouped together */
+.button-inline {
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================
+   DEFAULT INPUT STYLE
+========================= */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================
+   BUTTON GROUP (view mode)
+========================= */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end; /* ger knappar längst till höger */
+}
+
+/* =========================
+   TEXT RESET
+========================= */
+.profile-row p {
+  margin: 0;
+}
+
+/* =========================
+   OPTIONAL: STATUS MESSAGES
+========================= */
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.empty {
+  color: #888;
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+@media (max-width: 600px) {
+  .account-page .hero,
+  .account-content {
+    padding: 20px;
+  }
+
+  .row-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group,
+  .button-inline {
+    justify-content: flex-start;
+  }
+}
+
+.account-message.warning {
+  color: #d97706; /* varm orange */
+}
+.account-message.error {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.account-message.success {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.account-message.warning {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.account-message.error {
+  color: #dc2626;
+}
+
+.account-message.success {
+  color: #16a34a;
+}
+
+.account-message.warning {
+  color: #d97706;
+}

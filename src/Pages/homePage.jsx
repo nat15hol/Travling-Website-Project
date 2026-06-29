@@ -6,10 +6,16 @@ import "../Styles/homepage.css";
 import { destinations } from "../data/destinations";
 
 import SearchBar from "../Components/SearchBar";
+import Header from "../Components/Header";
 
 
-
-function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
+function HomePage({
+  isLoggedIn,
+  setIsLoggedIn,
+  setCurrentPage,
+  setSearchData,
+  setSelectedDestination,
+}) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -36,23 +42,14 @@ function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
 
     return (
         <div className="homepage">
+
+        <Header
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentPage={setCurrentPage}
+        />
             {/* HERO SECTION */}
             <header className="hero">
-                <nav className="navbar">
-                    <div className="logo">✈ Wanderlust</div>
-
-                    <ul className="navLinks">
-                        <li>Home</li>
-                        <li>Search</li>
-                        <li>Destinations</li>
-                        <li>My Account</li>
-                        <li>Sign Up</li>
-                    </ul>
-
-                    <button className="accountBtn">
-                        Access Account
-                    </button>
-                </nav>
 
                 <div className="heroContent">
 
