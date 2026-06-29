@@ -15,9 +15,6 @@ export default function PasswordStatus({
     email.trim() !== "" &&
     users.some((u) => u.email === email.trim());
 
-  let status = "idle";
-  let message = "";
-
   const isMissing =
     !username || !email || !password || !confirmPassword;
 
@@ -28,31 +25,28 @@ export default function PasswordStatus({
     confirmPassword.length > 0 &&
     password !== confirmPassword;
 
-  const isSuccess =
-    !isMissing &&
-    !isTooShort &&
-    !isMismatch &&
-    !usernameTaken &&
-    !emailTaken;
+  let status = "idle";
+  let message = "";
 
+  // 🟡 prioritetsordning (viktig för UX-flöde)
   if (usernameTaken) {
     status = "error";
-    message = "Username is already taken";
+    message = "This username is already taken";
   } else if (emailTaken) {
     status = "error";
-    message = "Email is already in use";
+    message = "This email is already in use";
   } else if (isTooShort) {
     status = "error";
-    message = "Password must be at least 12 characters";
+    message = "Password needs at least 12 characters";
   } else if (isMissing) {
     status = "warning";
-    message = "Please complete all fields";
+    message = "Please fill in all fields to continue";
   } else if (isMismatch) {
     status = "error";
-    message = "Passwords don’t match";
-  } else if (isSuccess) {
+    message = "Passwords don’t match yet";
+  } else {
     status = "success";
-    message = "Create account to begin your adventure!";
+    message = "Looks good — you can create your account";
   }
 
   const leftIcon = status === "success" ? "✅" : "❌";

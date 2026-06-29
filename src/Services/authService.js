@@ -8,12 +8,6 @@ export function saveUsers(users) {
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
-export function createUser(user) {
-  const users = getUsers();
-  users.push(user);
-  saveUsers(users);
-}
-
 export function findUserByUsername(username) {
   return getUsers().find(u => u.username === username);
 }
