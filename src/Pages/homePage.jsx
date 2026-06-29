@@ -6,13 +6,19 @@ import "../Styles/homepage.css";
 import { destinations } from "../data/destinations";
 
 import SearchBar from "../Components/SearchBar";
+import Header from "../Components/Header";
 
 import Header from "../Components/Header";
 
 import Footer from "../Components/Footer";
 
-
-function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
+function HomePage({
+  isLoggedIn,
+  setIsLoggedIn,
+  setCurrentPage,
+  setSearchData,
+  setSelectedDestination,
+}) {
     const [showGuests, setShowGuests] = useState(false);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -39,6 +45,12 @@ function HomePage({setCurrentPage, setSearchData, setSelectedDestination}) {
 
     return (
         <div className="homepage">
+
+        <Header
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentPage={setCurrentPage}
+        />
             {/* HERO SECTION */}
             <header className="hero">
                 <Header setCurrentPage={setCurrentPage} />
