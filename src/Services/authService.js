@@ -68,7 +68,15 @@ export function signup(user) {
   const validation = validateSignup(user, users);
   if (!validation.ok) return validation;
 
-  users.push(user);
+  const newUser = {
+    firstName: user.firstName,
+    lastName: user.lastName,
+    username: user.username,
+    email: user.email,
+    password: user.password,
+  };
+
+  users.push(newUser);
   saveUsers(users);
 
   return { ok: true };
