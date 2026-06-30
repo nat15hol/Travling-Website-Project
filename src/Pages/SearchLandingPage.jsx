@@ -38,6 +38,8 @@ function SearchLandingPage({
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [searchedAmenities, setSearchedAmenities] = useState([]);
 
+  const [sortOption, setSortOption] = useState("recommended");
+
   function toggleRating(rating) {
   if (selectedRatings.includes(rating)) { setSelectedRatings(selectedRatings.filter((item) => item !== rating)); } 
   else { setSelectedRatings([...selectedRatings, rating]); }
@@ -64,6 +66,13 @@ function SearchLandingPage({
     const matchesRating = searchedRatings.includes(destination.rating);
     const matchesAmenities = searchedAmenities.length === 0 || searchedAmenities.every((amenity) => destination.amenities.includes(amenity));
     return matchesCity && hasRoomForGuests && matchesPrice && matchesRating && matchesAmenities;
+  });
+
+  const sortedDestinations = [...filteredDestinations].sort((a, b) => {
+  if (sortOption === "priceLow") {return a.pricePerNight - b.pricePerNight;}
+  if (sortOption === "priceHigh") {return b.pricePerNight - a.pricePerNight;}
+  if (sortOption === "ratingHigh") {return b.rating - a.rating;}
+  return 0;
   });
 
   /*-------------------------------*/ 
@@ -98,11 +107,8 @@ function SearchLandingPage({
   return (
 
     <div className="search-page">
-<Header
-  isLoggedIn={isLoggedIn}
-  setIsLoggedIn={setIsLoggedIn}
-  setCurrentPage={setCurrentPage}
-/>
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
+
       <header className="hero" style=
       {{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})`,}}>
 
@@ -116,6 +122,7 @@ function SearchLandingPage({
       </header>
 
       <main className="content">
+
         <aside className="sidebar">
           <div className="mapBox">
             <p>Map preview</p>
@@ -169,11 +176,19 @@ function SearchLandingPage({
 
         <section className="results">
           <div className="resultsHeader">
+
             <h2>{filteredDestinations.length} places to stay in {matchedCity}</h2>
-            <button className="button-primary">Sort by: Recommended ˅</button>
+
+          <select className="sortDropdown" value={sortOption} onChange={(event) => setSortOption(event.target.value)}>
+            <option value="recommended">Recommended</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+            <option value="ratingHigh">Rating: High to Low</option>
+          </select>
+
           </div>
 
-          {filteredDestinations.map((destination) => (
+          {sortedDestinations.map((destination) => (
             <article className="hotelCard" key={destination.id}>
             <img src={destination.image} alt={destination.name} />
 

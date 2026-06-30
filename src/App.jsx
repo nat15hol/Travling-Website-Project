@@ -4,27 +4,18 @@ import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
-
 import DestinationsPage from "./Pages/DestinationsPage";
-
+import BookingPage from "./Pages/BookingPage";
+import ConfirmationPage from "./Pages/ConfirmationPage";
 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
-  const [searchData, setSearchData] = useState({
-    city: "London",
-    guests: 2,
-    checkInDate: null,
-    checkOutDate: null,
-  });
-
-  const [selectedDestination, setSelectedDestination] = useState({
-    name: "[Hotel]",
-    image: null,
-    city: "[City]",
-    country: "[Country]",
-  });
+  const [searchData, setSearchData] = useState({ city: "London", guests: 2, checkInDate: null, checkOutDate: null,});
+  const [selectedDestination, setSelectedDestination] = useState({ name: "[Hotel]", image: null, city: "[City]", country: "[Country]",
+  rating: 0, pricePerNight: 0, shortDescription: "No destination selected.", 
+  rooms: [{type: "Standard Room", available: 0, maxGuests: 2,},],});
 
   switch (currentPage) {
     case "home":
@@ -48,8 +39,6 @@ function App() {
         />
       );
 
-  
-  
     case "destination":
       return (
         <DestinationsPage
@@ -60,7 +49,24 @@ function App() {
           country={selectedDestination.country}
         />
       );
-
+    
+    case "booking":
+      return (
+        <BookingPage
+        setCurrentPage={setCurrentPage}
+        selectedDestination={selectedDestination}
+        setSelectedDestination={setSelectedDestination}
+        />
+      );
+      
+    case "confirmation":
+      return (
+        <ConfirmationPage
+          setCurrentPage={setCurrentPage}
+          selectedDestination={null}
+        />
+      );
+    
     case "login":
       return (
         <LoginPage
