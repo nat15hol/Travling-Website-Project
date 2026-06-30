@@ -4,6 +4,7 @@ import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
+import FavoritePage from "./Pages/FavoritePage";
 
 import DestinationsPage from "./Pages/DestinationsPage";
 
@@ -80,6 +81,16 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
       );
+
+case "favorites":
+  return (
+    <FavoritePage
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+      setSelectedDestination={setSelectedDestination}
+    />
+  );
 
     default:
       return (

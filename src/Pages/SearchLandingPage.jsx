@@ -20,6 +20,20 @@ function SearchLandingPage({
   const [searchedCity, setSearchedCity] = useState(searchData.city);
   const [searchedGuestCount, setSearchedGuestCount] = useState(searchData.guests);
 
+
+function toggleFavorite(destination) {
+const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+const exists = stored.some(fav => fav.id === destination.id);
+let updated;
+if (exists) {
+updated = stored.filter(fav => fav.id !== destination.id);
+} else {
+updated = [...stored, destination];
+}
+localStorage.setItem("favorites", JSON.stringify(updated));
+}
+
+
   function handleSearch(city, guests) {
   setSearchedCity(city);
   setSearchedGuestCount(guests);
@@ -192,6 +206,10 @@ function SearchLandingPage({
               <h2>${destination.pricePerNight}</h2>
               <button>Book now</button>
               <small>Free cancellation</small>
+
+                  <button onClick={() => toggleFavorite(destination)}>
+      ❤️ Save
+    </button>
             </div>
             
             </article>

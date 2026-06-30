@@ -1,0 +1,13 @@
+.favorites-content {
+  padding: 40px 20px;
+}
+
+.favorites-content h2 {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.favorites-empty,
+.favorites-list {
+  margin-top: 20px;
+}
