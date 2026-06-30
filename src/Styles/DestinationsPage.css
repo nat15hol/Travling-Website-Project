@@ -1,6 +1,6 @@
 img {
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 650px;
+  max-height: 650px;
 }
 
 .hero {
@@ -21,8 +21,6 @@ img {
 }
 
 #center {
-  display: flex;
-  flex-direction: column;
   gap: 25px;
   place-content: center;
   place-items: center;
@@ -35,6 +33,7 @@ img {
 }
 
 #next-steps {
+  align-items: center;
   display: flex;
   border-top: 1px solid var(--border);
   text-align: left;

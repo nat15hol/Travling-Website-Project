@@ -28,7 +28,7 @@ function App() {
     country: "[Country]",
     longDescription: null,
     rating: 0, pricePerNight: "N/A",
-    amenities: null/*, rooms: null */
+    amenities: null, rooms: null
   });
 
   switch (currentPage) {
@@ -65,6 +65,7 @@ function App() {
           rating={selectedDestination.rating}
           pricePerNight={selectedDestination.pricePerNight}
           amenities={selectedDestination.amenities}
+          rooms={selectedDestination.rooms}
         />
       );
     
