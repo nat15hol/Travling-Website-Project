@@ -307,7 +307,7 @@ const canSaveProfile =
 
       </main>
 
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

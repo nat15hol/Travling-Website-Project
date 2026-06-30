@@ -34,7 +34,7 @@ export default function DestinationsPage({ setCurrentPage, name, image, city, co
         </div>
 
       </section>
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </>
   );
 }

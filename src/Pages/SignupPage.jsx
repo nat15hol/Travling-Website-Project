@@ -123,7 +123,7 @@ export default function SignupPage({ setCurrentPage }) {
         </div>
       </header>
 
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

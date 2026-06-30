@@ -79,7 +79,7 @@ function ConfirmationPage({ setCurrentPage, selectedDestination }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

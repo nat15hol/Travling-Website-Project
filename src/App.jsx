@@ -7,6 +7,12 @@ import AccessAccountPage from "./Pages/AccessAccountPage";
 
 import DestinationsPage from "./Pages/DestinationsPage";
 
+//Added the import of About Page
+import AboutPage from "./Pages/AboutPage";
+
+//Added the import of Contact Page
+import ContactPage from "./Pages/ContactPage";
+
 
 
 function App() {
@@ -80,6 +86,25 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
       );
+// Added the case for About Page
+    case "about":
+    return (
+        <AboutPage
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentPage={setCurrentPage}
+        />
+    );
+
+//Added the case for Contact Page
+    case "contact":
+    return (
+        <ContactPage
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentPage={setCurrentPage}
+        />
+    );
 
     default:
       return (

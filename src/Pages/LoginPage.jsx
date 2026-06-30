@@ -68,7 +68,7 @@ function handleLogin() {
           </div>
           </div>
       </header>
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

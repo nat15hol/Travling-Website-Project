@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-function Footer() {
+function Footer({ setCurrentPage }) {     //
   return (
     <footer className="footer">
 
@@ -11,9 +11,17 @@ function Footer() {
 
       <div className="footerSection">
         <h3>Company</h3>
-        <p>About Us</p>
+
+        <p onClick={() => setCurrentPage("about")}>
+          About Us
+        </p>
+
         <p>Careers</p>
-        <p>Contact</p>
+
+        <p onClick={() => setCurrentPage("contact")}>
+          Contact
+        </p>
+        
       </div>
 
       <div className="footerSection">
