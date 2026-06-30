@@ -3,7 +3,6 @@ import "../Styles/DestinationsPage.css";
 import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import SearchBar from '../Components/SearchBar';
 
 export default function DestinationsPage({ setCurrentPage, name, image, city,
   country, longDescription, rating, pricePerNight, amenities, rooms }) {
