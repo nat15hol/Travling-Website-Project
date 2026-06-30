@@ -7,7 +7,8 @@ import AccessAccountPage from "./Pages/AccessAccountPage";
 import FavoritePage from "./Pages/FavoritePage";
 
 import DestinationsPage from "./Pages/DestinationsPage";
-
+import BookingPage from "./Pages/BookingPage";
+import ConfirmationPage from "./Pages/ConfirmationPage";
 
 
 function App() {
@@ -52,8 +53,6 @@ function App() {
         />
       );
 
-  
-  
     case "destination":
       return (
         <DestinationsPage
@@ -68,7 +67,24 @@ function App() {
           amenities={selectedDestination.amenities}
         />
       );
-
+    
+    case "booking":
+      return (
+        <BookingPage
+        setCurrentPage={setCurrentPage}
+        selectedDestination={selectedDestination}
+        setSelectedDestination={setSelectedDestination}
+        />
+      );
+      
+    case "confirmation":
+      return (
+        <ConfirmationPage
+          setCurrentPage={setCurrentPage}
+          selectedDestination={null}
+        />
+      );
+    
     case "login":
       return (
         <LoginPage
