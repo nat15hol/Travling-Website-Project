@@ -72,3 +72,6 @@
   width: 180px;
   z-index: 1000;
 }
+.guestSelector strong {
+  white-space: nowrap;
+}

@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../Styles/BookingPage.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import "../Styles/buttons.css";
 
 function BookingPage({ setCurrentPage, selectedDestination, setSelectedDestination }) {
 
