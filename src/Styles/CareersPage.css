@@ -1,0 +1,65 @@
+.careersPage {
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.careersContainer {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.careersContainer h1 {
+    text-align: center;
+    color: #0b1f4d;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.careerCard {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.careerCard h2 {
+    color: #1565d8;
+    margin-bottom: 15px;
+}
+
+.careerCard p,
+.careerCard li {
+    color: #555;
+    line-height: 1.8;
+}
+
+.careerCard ul {
+    padding-left: 20px;
+}
+
+@media (max-width:768px) {
+
+    .careersContainer {
+        margin: 20px 15px;
+        padding: 10px;
+    }
+
+    .careersContainer h1 {
+        font-size: 2rem;
+    }
+
+    .careerCard {
+        padding: 20px;
+    }
+
+}

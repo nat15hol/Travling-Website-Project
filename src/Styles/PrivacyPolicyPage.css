@@ -1,0 +1,60 @@
+.privacyPage {
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.privacyContainer {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.privacyContainer h1 {
+    text-align: center;
+    color: #0b1f4d;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.privacyCard {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.privacyCard h2 {
+    color: #1565d8;
+    margin-bottom: 15px;
+}
+
+.privacyCard p {
+    color: #555;
+    line-height: 1.8;
+}
+
+@media (max-width:768px) {
+
+    .privacyContainer {
+        margin: 20px 15px;
+        padding: 10px;
+    }
+
+    .privacyContainer h1 {
+        font-size: 2rem;
+    }
+
+    .privacyCard {
+        padding: 20px;
+    }
+
+}
