@@ -4,8 +4,6 @@ import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import SearchBar from '../Components/SearchBar';
-import "../Styles/buttons.css";
-import "../Styles/global.css";
 
 export default function DestinationsPage({ setCurrentPage, name, image, city, country }) {
 
