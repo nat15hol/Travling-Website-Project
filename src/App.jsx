@@ -25,6 +25,9 @@ function App() {
     image: null,
     city: "[City]",
     country: "[Country]",
+    longDescription: null,
+    rating: 0, pricePerNight: "N/A",
+    amenities: null/*, rooms: null */
   });
 
   switch (currentPage) {
@@ -59,6 +62,10 @@ function App() {
           image={selectedDestination.image}
           city={selectedDestination.city}
           country={selectedDestination.country}
+          longDescription={selectedDestination.longDescription}
+          rating={selectedDestination.rating}
+          pricePerNight={selectedDestination.pricePerNight}
+          amenities={selectedDestination.amenities}
         />
       );
 
