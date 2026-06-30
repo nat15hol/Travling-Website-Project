@@ -2,10 +2,13 @@ import { useState } from "react";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
-import DestinationsPage from "./Pages/DestinationsPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
 import FavoritePage from "./Pages/FavoritePage";
+
+import DestinationsPage from "./Pages/DestinationsPage";
+
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +49,8 @@ function App() {
         />
       );
 
+  
+  
     case "destination":
       return (
         <DestinationsPage
