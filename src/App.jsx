@@ -4,6 +4,8 @@ import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
+import FavoritePage from "./Pages/FavoritePage";
+
 import DestinationsPage from "./Pages/DestinationsPage";
 import BookingPage from "./Pages/BookingPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
@@ -12,10 +14,22 @@ import ConfirmationPage from "./Pages/ConfirmationPage";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
-  const [searchData, setSearchData] = useState({ city: "London", guests: 2, checkInDate: null, checkOutDate: null,});
-  const [selectedDestination, setSelectedDestination] = useState({ name: "[Hotel]", image: null, city: "[City]", country: "[Country]",
-  rating: 0, pricePerNight: 0, shortDescription: "No destination selected.", 
-  rooms: [{type: "Standard Room", available: 0, maxGuests: 2,},],});
+  const [searchData, setSearchData] = useState({
+    city: "London",
+    guests: 2,
+    checkInDate: null,
+    checkOutDate: null,
+  });
+
+  const [selectedDestination, setSelectedDestination] = useState({
+    name: "[Hotel]",
+    image: null,
+    city: "[City]",
+    country: "[Country]",
+    longDescription: null,
+    rating: 0, pricePerNight: "N/A",
+    amenities: null/*, rooms: null */
+  });
 
   switch (currentPage) {
     case "home":
@@ -47,6 +61,10 @@ function App() {
           image={selectedDestination.image}
           city={selectedDestination.city}
           country={selectedDestination.country}
+          longDescription={selectedDestination.longDescription}
+          rating={selectedDestination.rating}
+          pricePerNight={selectedDestination.pricePerNight}
+          amenities={selectedDestination.amenities}
         />
       );
     
@@ -86,6 +104,16 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
       );
+
+case "favorites":
+  return (
+    <FavoritePage
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+      setSelectedDestination={setSelectedDestination}
+    />
+  );
 
     default:
       return (

@@ -80,6 +80,12 @@ function HomePage({
                                     image: destination.image,
                                     city: destination.city,
                                     country: destination.country,
+                                    shortDescription: destination.shortDescription,
+                                    longDescription: destination.longDescription,
+                                    rating: destination.rating,
+                                    pricePerNight: destination.pricePerNight,
+                                    amenities: destination.amenities/*,
+                                    rooms: destination.rooms*/
                                 });
                                 setCurrentPage("destination");
                             }}
@@ -144,6 +150,12 @@ function HomePage({
                                     image: destination.image,
                                     city: destination.city,
                                     country: destination.country,
+                                    shortDescription: destination.shortDescription,
+                                    longDescription: destination.longDescription,
+                                    rating: destination.rating,
+                                    pricePerNight: destination.pricePerNight,
+                                    amenities: destination.amenities/*,
+                                    rooms: destination.rooms*/
                                 });
                                 setCurrentPage("destination");
                             }}
