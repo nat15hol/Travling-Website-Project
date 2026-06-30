@@ -5,6 +5,7 @@ import SearchLandingPage from "./Pages/SearchLandingPage";
 import DestinationsPage from "./Pages/DestinationsPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
+import FavoritePage from "./Pages/FavoritePage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -75,6 +76,16 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
       );
+
+case "favorites":
+  return (
+    <FavoritePage
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+      setSelectedDestination={setSelectedDestination}
+    />
+  );
 
     default:
       return (
