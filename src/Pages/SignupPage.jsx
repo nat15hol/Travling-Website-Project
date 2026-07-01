@@ -119,6 +119,7 @@ export default function SignupPage({ setCurrentPage }) {
             </button>
             
           </div>
+          
           <p style={{ fontSize: "11px", color: "#cfcfcf" }}>
   By adding your email address, you accept our{" "}
   <span

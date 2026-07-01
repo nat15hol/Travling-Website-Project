@@ -4,8 +4,10 @@ import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
+
 export default function DestinationsPage({ isLoggedIn, setIsLoggedIn, setCurrentPage,
   name, image, city, country, longDescription, rating, pricePerNight, amenities, rooms }) {
+
   return (
     <>
     <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />

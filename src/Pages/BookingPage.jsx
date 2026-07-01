@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Styles/BookingPage.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { getCurrentUser } from "../Services/authService";
+
 
 function BookingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestination, setSelectedDestination }) {
 
@@ -33,7 +35,20 @@ function BookingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestin
   expiryDate: "",
   cvv: "",
 });
+useEffect(() => {
+  if (isLoggedIn) {
+    const user = getCurrentUser(); // eller hur ni nu lagrar inloggad user
 
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+      }));
+    }
+  }
+}, [isLoggedIn]);
 const [errorMessage, setErrorMessage] = useState("");
 
 function updateFormData(fieldName, value) { setFormData({ ...formData, [fieldName]: value, }); }
@@ -153,7 +168,22 @@ function handleConfirmBooking() {
             </div>
 
             {errorMessage && ( <p className="bookingError">{errorMessage}</p> )}
-
+<p style={{ fontSize: "14px", color: "#bdbdbd" }}><br/>
+  By adding your email address, you accept our{" "}
+  <span
+    onClick={() => setCurrentPage("terms")}
+    style={{ color: "#6ec1ff", cursor: "pointer" }}
+  >
+    terms of use
+  </span>{" "}
+  and{" "}
+  <span
+    onClick={() => setCurrentPage("privacy")}
+    style={{ color: "#6ec1ff", cursor: "pointer" }}
+  >
+    privacy policy
+  </span>.
+</p>
             <button className="button-primary confirmBookingButton" onClick={handleConfirmBooking}>Confirm Booking</button>
          
           </div>
