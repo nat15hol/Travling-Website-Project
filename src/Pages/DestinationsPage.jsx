@@ -7,11 +7,12 @@ import SearchBar from '../Components/SearchBar';
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 
-export default function DestinationsPage({ setCurrentPage, name, image, city,
+export default function DestinationsPage({ isLoggedIn,  setIsLoggedIn, setCurrentPage, name, image, city,
   country, longDescription, rating, pricePerNight, amenities/*, rooms*/ }) {
   return (
     <>
-    <Header setCurrentPage={setCurrentPage} />
+    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
+
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
         </div>
@@ -35,7 +36,15 @@ export default function DestinationsPage({ setCurrentPage, name, image, city,
           <div>
             <h2>DESCRIPTION</h2>
             {longDescription}
+
+            <br/>
+            <br/>
+
+            <button onClick={() => {if (isLoggedIn) {setCurrentPage("booking");} else {setCurrentPage("login");}}}>Book Now</button>
+
           </div>
+
+          
         </div>
 
       </section>

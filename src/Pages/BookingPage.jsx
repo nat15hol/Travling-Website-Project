@@ -4,7 +4,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import "../Styles/buttons.css";
 
-function BookingPage({ setCurrentPage, selectedDestination, setSelectedDestination }) {
+function BookingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestination, setSelectedDestination }) {
 
   /*Använd "selectedDestination" om det finns, annars använd placeholder*/
   const destination = selectedDestination || {
@@ -59,7 +59,7 @@ function handleConfirmBooking() {
   return (
     <div className="bookingPage">
       
-      <Header setCurrentPage={setCurrentPage} />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
 
       <main className="bookingContainer">
 

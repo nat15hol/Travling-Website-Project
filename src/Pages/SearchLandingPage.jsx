@@ -7,32 +7,13 @@ import SearchBar from "../Components/SearchBar";
 import "../Styles/buttons.css";
 import "../Styles/global.css";
 
-function SearchLandingPage({
-  isLoggedIn,
-  setIsLoggedIn,
-  setCurrentPage,
-  searchData,
-}) {
+function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchData, setSelectedDestination,}) {
 
   /*-------------------------------*/ 
   /*--------Search bar-------------*/ 
   /*-------------------------------*/ 
   const [searchedCity, setSearchedCity] = useState(searchData.city);
   const [searchedGuestCount, setSearchedGuestCount] = useState(searchData.guests);
-
-
-function toggleFavorite(destination) {
-const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-const exists = stored.some(fav => fav.id === destination.id);
-let updated;
-if (exists) {
-updated = stored.filter(fav => fav.id !== destination.id);
-} else {
-updated = [...stored, destination];
-}
-localStorage.setItem("favorites", JSON.stringify(updated));
-}
-
 
   function handleSearch(city, guests) {
   setSearchedCity(city);
@@ -88,6 +69,26 @@ localStorage.setItem("favorites", JSON.stringify(updated));
   if (sortOption === "ratingHigh") {return b.rating - a.rating;}
   return 0;
   });
+
+
+  /*-------------------------------*/ 
+  /*--------Destination Cards-------------*/ 
+  /*-------------------------------*/ 
+  function toggleFavorite(destination) {
+  const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+  const exists = stored.some(fav => fav.id === destination.id);
+  let updated;
+  if (exists) { updated = stored.filter(fav => fav.id !== destination.id); } 
+  else { updated = [...stored, destination]; }
+  localStorage.setItem("favorites", JSON.stringify(updated));
+  }
+
+  function openDestination(destination) {
+  console.log("Clicked destination:", destination);
+  setSelectedDestination(destination);
+  setCurrentPage("destination");
+  }
+
 
   /*-------------------------------*/ 
   /*--------Location Data-------------*/ 
@@ -189,6 +190,7 @@ localStorage.setItem("favorites", JSON.stringify(updated));
         </aside>
 
         <section className="results">
+
           <div className="resultsHeader">
 
             <h2>{filteredDestinations.length} places to stay in {matchedCity}</h2>
@@ -203,11 +205,13 @@ localStorage.setItem("favorites", JSON.stringify(updated));
           </div>
 
           {sortedDestinations.map((destination) => (
+
             <article className="hotelCard" key={destination.id}>
-            <img src={destination.image} alt={destination.name} />
+
+            <img src={destination.image} alt={destination.name} onClick={() => openDestination(destination)} style={{cursor: "pointer"}}/>
 
             <div className="hotelInfo">
-              <h3>{destination.name}</h3>
+              <h3 onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}>{destination.name}</h3>
               <p>📍 {destination.city}, {destination.country}</p>
               <p>{destination.rating} ⭐ <span>({destination.rooms.length} room types)</span></p>
               <p>{destination.shortDescription}</p>
@@ -219,12 +223,8 @@ localStorage.setItem("favorites", JSON.stringify(updated));
             <div className="priceBox">
               <span>Price per night</span>
               <h2>${destination.pricePerNight}</h2>
-              <button>Book now</button>
               <small>Free cancellation</small>
-
-                  <button onClick={() => toggleFavorite(destination)}>
-      ❤️ Save
-    </button>
+              <button onClick={() => toggleFavorite(destination)}>❤️ Save</button>
             </div>
             
             </article>

@@ -21,15 +21,17 @@ function App() {
     checkOutDate: null,
   });
 
-  const [selectedDestination, setSelectedDestination] = useState({
-    name: "[Hotel]",
-    image: null,
-    city: "[City]",
-    country: "[Country]",
-    longDescription: null,
-    rating: 0, pricePerNight: "N/A",
-    amenities: null/*, rooms: null */
-  });
+  // const [selectedDestination, setSelectedDestination] = useState({
+  // name: "[Hotel]",
+  // image: null,
+  // city: "[City]",
+  // country: "[Country]",
+  // longDescription: null,
+  // rating: 0,
+  // pricePerNight: "N/A",
+  // amenities: null
+  // });
+  const [selectedDestination, setSelectedDestination] = useState(null);
 
   switch (currentPage) {
     case "home":
@@ -50,12 +52,15 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           setCurrentPage={setCurrentPage}
           searchData={searchData}
+          setSelectedDestination={setSelectedDestination}
         />
       );
 
     case "destination":
       return (
         <DestinationsPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
           setCurrentPage={setCurrentPage}
           name={selectedDestination.name}
           image={selectedDestination.image}
@@ -71,6 +76,8 @@ function App() {
     case "booking":
       return (
         <BookingPage
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
         setCurrentPage={setCurrentPage}
         selectedDestination={selectedDestination}
         setSelectedDestination={setSelectedDestination}
@@ -80,8 +87,10 @@ function App() {
     case "confirmation":
       return (
         <ConfirmationPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
           setCurrentPage={setCurrentPage}
-          selectedDestination={null}
+          selectedDestination={selectedDestination}
         />
       );
     
@@ -108,6 +117,14 @@ function App() {
 case "favorites":
   return (
     <FavoritePage
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+      setSelectedDestination={setSelectedDestination}
+    />
+  );
+  return (
+    <BookingHistoryPage
       isLoggedIn={isLoggedIn}
       setIsLoggedIn={setIsLoggedIn}
       setCurrentPage={setCurrentPage}

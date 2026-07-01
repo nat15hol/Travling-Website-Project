@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import "../Styles/ConfirmationPage.css";
 import "../Styles/buttons.css";
 
-function ConfirmationPage({ setCurrentPage, selectedDestination }) {
+function ConfirmationPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestination }) {
+
   const destination = selectedDestination || {
+    id: 1,
     name: "Hotel Lumière Paris",
     city: "Paris",
     country: "France",
@@ -14,10 +17,30 @@ function ConfirmationPage({ setCurrentPage, selectedDestination }) {
     rooms: [{ type: "Standard Room" }],
   };
 
+
+  useEffect(() => { 
+    
+  const bookingDate = new Date().toLocaleDateString();
+
+  const newBooking = {
+    ...destination,
+    bookingId: `${destination.id}-${bookingDate}`,
+    bookingDate: bookingDate,
+    checkInDate: "Placeholder check-in",
+    checkOutDate: "Placeholder check-out",
+  };
+
+  const oldBookings = JSON.parse(localStorage.getItem("bookingHistory")) || [];
+  const bookingAlreadyExists = oldBookings.some((booking) => booking.id === destination.id && booking.bookingDate === bookingDate);
+  if (bookingAlreadyExists) { return; }
+  localStorage.setItem("bookingHistory", JSON.stringify([...oldBookings, newBooking]));
+
+  }, []);
+
   return (
     <div className="confirmationPage">
 
-      <Header setCurrentPage={setCurrentPage}/>
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
 
       <main className="confirmationContainer">
 
