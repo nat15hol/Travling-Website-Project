@@ -5,12 +5,23 @@ import "../Styles/AccessAccountPage.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
+
+
+
 export default function AccessAccountPage({
   isLoggedIn,
   setIsLoggedIn,
   setCurrentPage,
   setSelectedDestination // Tillagd från FavoritePage för att hantera klick på favoriter
 }) {
+  const [message, setMessage] = useState("");
+  function showMessage(text) {
+  setMessage(text);
+
+  setTimeout(() => {
+    setMessage("");
+  }, 2000);
+}
   // ==========================================
   // STATE & LOGIK FRÅN ACCESSACCOUNT-ORIGINAL
   // ==========================================
@@ -35,10 +46,15 @@ export default function AccessAccountPage({
   const [bookings, setBookings] = useState([]);
 
   function cancelBooking(bookingId) {
-  const updatedBookings = bookings.filter((booking) => booking.bookingId !== bookingId);
+  const updatedBookings = bookings.filter(
+    (booking) => booking.bookingId !== bookingId
+  );
+
   setBookings(updatedBookings);
   localStorage.setItem("bookingHistory", JSON.stringify(updatedBookings));
-  }
+
+  showMessage("❌ Booking cancelled");
+}
 
 
   // ==========================================
@@ -184,10 +200,12 @@ export default function AccessAccountPage({
   // FUNKTIONER FRÅN FAVORITEPAGE
   // ==========================================
   function removeFavorite(id) {
-    const updated = favorites.filter(f => f.id !== id);
-    setFavorites(updated);
-    localStorage.setItem("favorites", JSON.stringify(updated));
-  }
+  const updated = favorites.filter(f => f.id !== id);
+  setFavorites(updated);
+  localStorage.setItem("favorites", JSON.stringify(updated));
+
+  showMessage("💔 Removed from favorites");
+}
   
   function openDestination(item) {
     setSelectedDestination(item);
@@ -214,6 +232,7 @@ export default function AccessAccountPage({
         setIsLoggedIn={setIsLoggedIn}
         setCurrentPage={setCurrentPage}
       />
+      {message && <div className="headerMessage">{message}</div>}
 
       <header className="hero">
         <div className="heroText">
