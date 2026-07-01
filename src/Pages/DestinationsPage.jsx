@@ -4,12 +4,15 @@ import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
-export default function DestinationsPage({ setCurrentPage, name, image, city,
-  country, longDescription, rating, pricePerNight, amenities, rooms }) {
+export default function DestinationsPage({ isLoggedIn,  setIsLoggedIn, setCurrentPage, name, image, city,
+  country, longDescription, rating, pricePerNight, amenities/*, rooms*/ }) {
   return (
     <>
-    <Header setCurrentPage={setCurrentPage} />
-      <div className="hero">
+    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
+
+      <div style={{backgroundColor: "orange" }}>
+        <div className="hero">
+        </div>
       </div>
 
       <section id="next-steps">
@@ -38,7 +41,15 @@ export default function DestinationsPage({ setCurrentPage, name, image, city,
           <div>
             <h2>DESCRIPTION</h2>
             {longDescription}
+
+            <br/>
+            <br/>
+
+            <button onClick={() => {if (isLoggedIn) {setCurrentPage("booking");} else {setCurrentPage("login");}}}>Book Now</button>
+
           </div>
+
+          
         </div>
 
       </section>

@@ -5,30 +5,13 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import SearchBar from "../Components/SearchBar";
 
-function SearchLandingPage({
-  isLoggedIn,
-  setIsLoggedIn,
-  setCurrentPage,
-  searchData,
-  setSelectedDestination,
-}) {
+function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchData, setSelectedDestination,}) {
+
   /*-------------------------------*/ 
   /*--------Search bar-------------*/ 
   /*-------------------------------*/ 
   const [searchedCity, setSearchedCity] = useState(searchData.city);
   const [searchedGuestCount, setSearchedGuestCount] = useState(searchData.guests);
-
-  function toggleFavorite(destination) {
-    const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-    const exists = stored.some(fav => fav.id === destination.id);
-    let updated;
-    if (exists) {
-      updated = stored.filter(fav => fav.id !== destination.id);
-    } else {
-      updated = [...stored, destination];
-    }
-    localStorage.setItem("favorites", JSON.stringify(updated));
-  }
 
   function handleSearch(city, guests) {
     setSearchedCity(city);
@@ -80,6 +63,26 @@ function SearchLandingPage({
     if (sortOption === "ratingHigh") { return b.rating - a.rating; }
     return 0;
   });
+
+
+  /*-------------------------------*/ 
+  /*--------Destination Cards-------------*/ 
+  /*-------------------------------*/ 
+  function toggleFavorite(destination) {
+  const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+  const exists = stored.some(fav => fav.id === destination.id);
+  let updated;
+  if (exists) { updated = stored.filter(fav => fav.id !== destination.id); } 
+  else { updated = [...stored, destination]; }
+  localStorage.setItem("favorites", JSON.stringify(updated));
+  }
+
+  function openDestination(destination) {
+  console.log("Clicked destination:", destination);
+  setSelectedDestination(destination);
+  setCurrentPage("destination");
+  }
+
 
   /*-------------------------------*/ 
   /*--------Location Data----------*/ 
@@ -179,6 +182,7 @@ function SearchLandingPage({
         </aside>
 
         <section className="results">
+
           <div className="resultsHeader">
             <h2>{filteredDestinations.length} places to stay in {matchedCity}</h2>
             <select className="sortDropdown" value={sortOption} onChange={(event) => setSortOption(event.target.value)}>
@@ -191,41 +195,33 @@ function SearchLandingPage({
 
           {sortedDestinations.length === 0 ? (
             <p className="no-results">No places match your filters. Try adjusting your search!</p>
-          ) : (
+             ) : (
             sortedDestinations.map((destination) => (
-              <article className="hotelCard" key={destination.id}>
-                <img src={destination.image} alt={destination.name} loading="lazy" />
 
-                <div className="hotelInfo">
-                  <h3>{destination.name}</h3>
-                  <p>📍 {destination.city}, {destination.country}</p>
-                  <p>{"⭐".repeat(destination.rating)} <span>({destination.rooms.length} room types)</span></p>
-                  <p>{destination.shortDescription}</p>
-                  <p className="amenities">
-                    {destination.amenities.join(" · ")}
-                  </p>
-                </div>
+            <article className="hotelCard" key={destination.id}>
 
-                <div className="priceBox">
-                  <span>Price per night</span>
-                  <h2>${destination.pricePerNight}</h2>
-                  <button 
-                    className="button button-primary"
-                    onClick={() => {
-                      setSelectedDestination(destination);
-                      setCurrentPage("destination");
-                    }}
-                  >
-                    Book now
-                  </button>
-                  <small>Free cancellation</small>
-                  <button className="button button-secondary" onClick={() => toggleFavorite(destination)}>
-                    ❤️ Save
-                  </button>
-                </div>
-              </article>
-            ))
-          )}
+            <img src={destination.image} alt={destination.name} loading="lazy" onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}/>
+
+            <div className="hotelInfo">
+              <h3 onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}>{destination.name}</h3>
+              <p>📍 {destination.city}, {destination.country}</p>
+              <p>{destination.rating} ⭐ <span>({destination.rooms.length} room types)</span></p>
+              <p>{destination.shortDescription}</p>
+              <p className="amenities">
+                {destination.amenities.join(" · ")}
+              </p>
+            </div>
+
+            <div className="priceBox">
+              <span>Price per night</span>
+              <h2>${destination.pricePerNight}</h2>
+              <small>Free cancellation</small>
+              <button onClick={() => toggleFavorite(destination)}>❤️ Save</button>
+            </div>
+            
+            </article>
+                  ))
+               )}
         </section>
       </main>
       <Footer />

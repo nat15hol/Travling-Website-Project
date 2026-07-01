@@ -30,6 +30,18 @@ export default function AccessAccountPage({
   const MIN_PASSWORD_LENGTH = 12;
 
   // ==========================================
+  // HISTORY PAGE GREJJER
+  // ==========================================
+  const [bookings, setBookings] = useState([]);
+
+  function cancelBooking(bookingId) {
+  const updatedBookings = bookings.filter((booking) => booking.bookingId !== bookingId);
+  setBookings(updatedBookings);
+  localStorage.setItem("bookingHistory", JSON.stringify(updatedBookings));
+  }
+
+
+  // ==========================================
   // STATE FRÅN FAVORITEPAGE
   // ==========================================
   const [favorites, setFavorites] = useState([]);
@@ -52,6 +64,9 @@ export default function AccessAccountPage({
     // Hämta favorit-data
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(storedFavorites);
+
+    // Hämta History-data
+    const storedBookings = JSON.parse(localStorage.getItem("bookingHistory")) || []; setBookings(storedBookings);
   }, []);
 
   const users = JSON.parse(localStorage.getItem("users") || "[]");
@@ -173,7 +188,7 @@ export default function AccessAccountPage({
     setFavorites(updated);
     localStorage.setItem("favorites", JSON.stringify(updated));
   }
-
+  
   function openDestination(item) {
     setSelectedDestination(item);
     setCurrentPage("destination");
@@ -239,6 +254,23 @@ export default function AccessAccountPage({
         >
           My Favorites ({favorites.length})
         </button>
+
+        <button
+          onClick={() => setActiveTab("bookings")}
+          style={{
+            padding: "10px 20px",
+            cursor: "pointer",
+            fontWeight: activeTab === "bookings" ? "bold" : "normal",
+            borderBottom: activeTab === "bookings" ? "2px solid black" : "none",
+            background: "none",
+            borderTop: "none",
+            borderLeft: "none",
+            borderRight: "none"
+          }}
+        >
+          Booking History ({bookings.length})
+        </button>
+
       </div>
 
       <main className="account-content">
@@ -374,6 +406,44 @@ export default function AccessAccountPage({
             )}
           </div>
         )}
+
+        {/* ==========================================
+            VISAR HISTORY-PAGE (Om fliken är aktiv)
+            ========================================== */}
+        {activeTab === "bookings" && (
+        <div className="favorites-content" style={{ width: "100%" }}>
+          <h2 style={{ marginBottom: "20px" }}>Booking History</h2>
+
+          {bookings.length === 0 ? (<p>No bookings yet.</p>) : 
+          ( bookings.map((item) => (
+              <article key={item.bookingId} className="hotelCard">
+
+                <img src={item.image} alt={item.name} onClick={() => openDestination(item)} style={{ cursor: "pointer" }}/>
+
+                <div className="hotelInfo">
+                  <h3>{item.name}</h3>
+                  <p>📍 {item.city}, {item.country}</p>
+                  <p>{item.rating} ⭐</p>
+
+                  <p>Booking Date: {" "} {item.bookingDate || "Placeholder"}</p>
+                </div>
+
+                <div className="priceBox">
+
+                  <span>Price per night</span>
+                  <h2>${item.pricePerNight}</h2>
+
+                  <button onClick={() => openDestination(item)}>View Details</button>
+
+                  <button className="cancelBookingButton" onClick={() => cancelBooking(item.bookingId)}>Cancel Booking</button>
+
+                </div>
+
+              </article>
+            ))
+          )}
+        </div>
+)}
 
       </main>
 
