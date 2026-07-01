@@ -4,6 +4,7 @@ import SignupPage from "./Pages/SignupPage";
 import SearchLandingPage from "./Pages/SearchLandingPage";
 import HomePage from "./Pages/homePage";
 import AccessAccountPage from "./Pages/AccessAccountPage";
+import FavoritePage from "./Pages/FavoritePage";
 
 import DestinationsPage from "./Pages/DestinationsPage";
 
@@ -26,6 +27,8 @@ import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
 import CareersPage from "./Pages/CareersPage";
 
 
+import BookingPage from "./Pages/BookingPage";
+import ConfirmationPage from "./Pages/ConfirmationPage";
 
 
 function App() {
@@ -38,12 +41,17 @@ function App() {
     checkOutDate: null,
   });
 
-  const [selectedDestination, setSelectedDestination] = useState({
-    name: "[Hotel]",
-    image: null,
-    city: "[City]",
-    country: "[Country]",
-  });
+  // const [selectedDestination, setSelectedDestination] = useState({
+  // name: "[Hotel]",
+  // image: null,
+  // city: "[City]",
+  // country: "[Country]",
+  // longDescription: null,
+  // rating: 0,
+  // pricePerNight: "N/A",
+  // amenities: null
+  // });
+  const [selectedDestination, setSelectedDestination] = useState(null);
 
   switch (currentPage) {
     case "home":
@@ -64,6 +72,7 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           setCurrentPage={setCurrentPage}
           searchData={searchData}
+          setSelectedDestination={setSelectedDestination}
         />
       );
 
@@ -72,14 +81,42 @@ function App() {
     case "destination":
       return (
         <DestinationsPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
           setCurrentPage={setCurrentPage}
           name={selectedDestination.name}
           image={selectedDestination.image}
           city={selectedDestination.city}
           country={selectedDestination.country}
+          longDescription={selectedDestination.longDescription}
+          rating={selectedDestination.rating}
+          pricePerNight={selectedDestination.pricePerNight}
+          amenities={selectedDestination.amenities}
+          rooms={selectedDestination.rooms}
         />
       );
-
+    
+    case "booking":
+      return (
+        <BookingPage
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setCurrentPage={setCurrentPage}
+        selectedDestination={selectedDestination}
+        setSelectedDestination={setSelectedDestination}
+        />
+      );
+      
+    case "confirmation":
+      return (
+        <ConfirmationPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+          selectedDestination={selectedDestination}
+        />
+      );
+    
     case "login":
       return (
         <LoginPage
@@ -160,6 +197,16 @@ function App() {
         />
       );
 
+
+case "favorites":
+  return (
+    <FavoritePage
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setCurrentPage={setCurrentPage}
+      setSelectedDestination={setSelectedDestination}
+    />
+  );
 
     default:
       return (

@@ -2,9 +2,8 @@ import { useState } from "react";
 import "../Styles/BookingPage.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import "../Styles/buttons.css";
 
-function BookingPage({ setCurrentPage, selectedDestination }) {
+function BookingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestination, setSelectedDestination }) {
 
   /*Använd "selectedDestination" om det finns, annars använd placeholder*/
   const destination = selectedDestination || {
@@ -51,13 +50,15 @@ function handleConfirmBooking() {
   if (formData.cvv.trim() === "") { setErrorMessage("Please enter the CVV."); return; }
 
   setErrorMessage("");
+  /* setSelectedDestination kan tas bort i framtiden, då det skall egentilgen sättas på destination page */
+  setSelectedDestination(destination);
   setCurrentPage("confirmation");
 }
 
   return (
     <div className="bookingPage">
       
-      <Header setCurrentPage={setCurrentPage} />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
 
       <main className="bookingContainer">
 
