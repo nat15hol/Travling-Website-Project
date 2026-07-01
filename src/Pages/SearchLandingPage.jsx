@@ -196,10 +196,10 @@ function SearchLandingPage({
             </div>
 
             <h4>Property type</h4>
-            <label><input type="checkbox" /> Hotels</label>
-            <label><input type="checkbox" /> Resorts</label>
-            <label><input type="checkbox" /> Villas</label>
-            <label><input type="checkbox" /> Apartments</label>
+            <label><input type="checkbox" />Hotels</label>
+            <label><input type="checkbox" />Resorts</label>
+            <label><input type="checkbox" />Villas</label>
+            <label><input type="checkbox" />Apartments</label>
 
             <h4>Guest rating</h4>
             {[5, 4, 3, 2, 1].map((stars) => (
