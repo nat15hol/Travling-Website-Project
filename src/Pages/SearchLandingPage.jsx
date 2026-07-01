@@ -5,7 +5,22 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import SearchBar from "../Components/SearchBar";
 
-function SearchLandingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, searchData, setSelectedDestination, }) {
+
+
+
+function SearchLandingPage({
+  isLoggedIn,
+  setIsLoggedIn,
+  setCurrentPage,
+  searchData,
+  setSelectedDestination,
+  message,
+  setMessage,
+}) {
+
+
+
+
 
   /*-------------------------------*/
   /*--------Search bar-------------*/
@@ -75,13 +90,25 @@ function SearchLandingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, searchDa
   /*--------Destination Cards-------------*/
   /*-------------------------------*/
   function toggleFavorite(destination) {
-    const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-    const exists = stored.some(fav => fav.id === destination.id);
-    let updated;
-    if (exists) { updated = stored.filter(fav => fav.id !== destination.id); }
-    else { updated = [...stored, destination]; }
-    localStorage.setItem("favorites", JSON.stringify(updated));
+  const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+  const exists = stored.some(fav => fav.id === destination.id);
+
+  let updated;
+
+  if (exists) {
+    updated = stored.filter(fav => fav.id !== destination.id);
+    setMessage("💔 Removed from favorites");
+  } else {
+    updated = [...stored, destination];
+    setMessage("❤️ Added to favorites");
   }
+
+  localStorage.setItem("favorites", JSON.stringify(updated));
+
+  setTimeout(() => {
+    setMessage("");
+  }, 2000);
+}
 
   function openDestination(destination) {
     console.log("Clicked destination:", destination);
@@ -121,7 +148,12 @@ function SearchLandingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, searchDa
 
   return (
     <div className="search-page">
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />
+      <Header
+  isLoggedIn={isLoggedIn}
+  setIsLoggedIn={setIsLoggedIn}
+  setCurrentPage={setCurrentPage}
+  message={message}
+/>
 
       <header className="hero" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})` }}>
         <div className="heroText">
@@ -230,7 +262,7 @@ function SearchLandingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, searchDa
                   <span>Price per night</span>
                   <h2>${destination.pricePerNight}</h2>
                   <small>Free cancellation</small>
-                  <button onClick={() => toggleFavorite(destination)}>❤️ Save</button>
+                  <button className="favoriteButton" onClick={() => toggleFavorite(destination)}>❤️ Save</button>
                 </div>
 
               </article>

@@ -2,8 +2,13 @@ import { useState } from "react";
 
 import "./Header.css";
 
-function Header({ isLoggedIn, setIsLoggedIn, setCurrentPage }) {
-  
+function Header({
+  isLoggedIn,
+  setIsLoggedIn,
+  setCurrentPage,
+  message,
+}) {
+console.log("Header message:", message);
   const handleSignOut = () => {
     setIsLoggedIn(false);
     setCurrentPage("home");
@@ -11,6 +16,11 @@ function Header({ isLoggedIn, setIsLoggedIn, setCurrentPage }) {
 
   return (
     <header className="mainHeader">
+      {message && (
+  <div className="headerMessage">
+    {message}
+  </div>
+)}
       <nav className="mainNavbar">
         <h2
           onClick={() => setCurrentPage("home")}

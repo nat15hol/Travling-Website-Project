@@ -31,9 +31,11 @@ import BookingPage from "./Pages/BookingPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
 
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
+  const [message, setMessage] = useState("");
   const [searchData, setSearchData] = useState({
     city: "London",
     guests: 2,
@@ -65,16 +67,18 @@ function App() {
         />
       );
 
-    case "search":
-      return (
-        <SearchLandingPage
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          setCurrentPage={setCurrentPage}
-          searchData={searchData}
-          setSelectedDestination={setSelectedDestination}
-        />
-      );
+case "search":
+  return (
+<SearchLandingPage
+  isLoggedIn={isLoggedIn}
+  setIsLoggedIn={setIsLoggedIn}
+  setCurrentPage={setCurrentPage}
+  searchData={searchData}
+  setSelectedDestination={setSelectedDestination}
+  message={message}
+  setMessage={setMessage}
+/>
+  );
 
 
 

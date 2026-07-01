@@ -63,6 +63,34 @@
   top: -25px;
 }
 
+.searchBox button,
+.resultsHeader button,
+.priceBox button,
+.mapBox button,
+.favoriteButton {
+  background-color: #0067e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.favoriteButton {
+  background-color: #0067e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.favoriteButton:hover {
+  background-color: #0054bd;
+}
+
 /*------------------------------*/
 /*--------Destination Search----*/
 /*------------------------------*/
