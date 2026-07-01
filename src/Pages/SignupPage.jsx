@@ -117,7 +117,24 @@ export default function SignupPage({ setCurrentPage }) {
             >
               Back to Login
             </button>
+            
           </div>
+          <p style={{ fontSize: "11px", color: "#cfcfcf" }}>
+  By adding your email address, you accept our{" "}
+  <span
+    onClick={() => setCurrentPage("terms")}
+    style={{ color: "#6ec1ff", cursor: "pointer" }}
+  >
+    terms of use
+  </span>{" "}
+  and{" "}
+  <span
+    onClick={() => setCurrentPage("privacy")}
+    style={{ color: "#6ec1ff", cursor: "pointer" }}
+  >
+    privacy policy
+  </span>.
+</p>
         </div>
       </header>
 
