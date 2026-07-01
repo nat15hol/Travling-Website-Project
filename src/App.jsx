@@ -124,14 +124,6 @@ case "favorites":
       setSelectedDestination={setSelectedDestination}
     />
   );
-  return (
-    <BookingHistoryPage
-      isLoggedIn={isLoggedIn}
-      setIsLoggedIn={setIsLoggedIn}
-      setCurrentPage={setCurrentPage}
-      setSelectedDestination={setSelectedDestination}
-    />
-  );
 
     default:
       return (
