@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-function Footer() {
+function Footer({ setCurrentPage }) {     //
   return (
     <footer className="footer">
 
@@ -11,23 +11,76 @@ function Footer() {
 
       <div className="footerSection">
         <h3>Company</h3>
-        <p>About Us</p>
-        <p>Careers</p>
-        <p>Contact</p>
+
+        {/*made these clickable*/}
+
+        <p onClick={() => setCurrentPage("about")}>
+          About Us
+        </p>
+
+        <p onClick={() => setCurrentPage("careers")}>
+          Careers
+        </p>
+
+        <p onClick={() => setCurrentPage("contact")}>
+          Contact
+        </p>
+
       </div>
 
       <div className="footerSection">
         <h3>Support</h3>
-        <p>Help Center</p>
-        <p>Terms of Service</p>
-        <p>Privacy Policy</p>
+
+        <p onClick={() => setCurrentPage("help")}>
+          Help Center
+        </p>
+
+        <p onClick={() => setCurrentPage("terms")}>
+          Terms of Service
+        </p>
+
+        <p onClick={() => setCurrentPage("privacy")}>
+          Privacy Policy
+        </p>
+
       </div>
 
+      {/*Made the following into hyperlinks and they open the general website*/}
+
       <div className="footerSection">
+
         <h3>Follow Us</h3>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>X / Twitter</p>
+
+        <p>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X / Twitter
+          </a>
+        </p>
+
       </div>
 
     </footer>

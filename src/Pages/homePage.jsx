@@ -206,7 +206,7 @@ function HomePage({
 
             {/* FOOTER */}
 
-            <Footer />
+            <Footer setCurrentPage={setCurrentPage} />
 
         </div>
     );

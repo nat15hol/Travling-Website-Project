@@ -44,7 +44,7 @@ export default function DestinationsPage({ isLoggedIn, setIsLoggedIn, setCurrent
         </div>
 
       </section>
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </>
   );
 }

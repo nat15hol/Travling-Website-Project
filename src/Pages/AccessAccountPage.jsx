@@ -447,7 +447,7 @@ export default function AccessAccountPage({
 
       </main>
 
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

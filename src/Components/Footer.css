@@ -44,3 +44,14 @@
     gap: 20px;
   }
 }
+
+/* for the social media section*/
+.footerSection a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footerSection a:hover {
+    color: #4da3ff;
+}

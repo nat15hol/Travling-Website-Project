@@ -80,7 +80,7 @@ function ConfirmationPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedD
         </section>
       </main>
 
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

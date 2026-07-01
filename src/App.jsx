@@ -7,6 +7,26 @@ import AccessAccountPage from "./Pages/AccessAccountPage";
 import FavoritePage from "./Pages/FavoritePage";
 
 import DestinationsPage from "./Pages/DestinationsPage";
+
+//Added the import of About Page
+import AboutPage from "./Pages/AboutPage";
+
+//Added the import of Contact Page
+import ContactPage from "./Pages/ContactPage";
+
+// Added the import of Help Page
+import HelpCenterPage from "./Pages/HelpCenterPage";
+
+// Added the import of Terms Page
+import TermsPage from "./Pages/TermsPage";
+
+// Added the import of Privacy Page
+import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
+
+// Added the import of Careers Page
+import CareersPage from "./Pages/CareersPage";
+
+
 import BookingPage from "./Pages/BookingPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
 
@@ -55,6 +75,8 @@ function App() {
           setSelectedDestination={setSelectedDestination}
         />
       );
+
+
 
     case "destination":
       return (
@@ -114,6 +136,67 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
       );
+    // Added the case for About Page
+    case "about":
+      return (
+        <AboutPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+
+    //Added the case for Contact Page
+    case "contact":
+      return (
+        <ContactPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+    //Added the case for Contact Page
+
+    case "help":
+      return (
+        <HelpCenterPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+
+    //Added the case for Terms Page
+    case "terms":
+      return (
+        <TermsPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+
+    //Added the case for Terms Page
+    case "privacy":
+      return (
+        <PrivacyPolicyPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+
+    //Added the case for Careers Page
+
+    case "careers":
+      return (
+        <CareersPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setCurrentPage={setCurrentPage}
+        />
+      );
+
 
 case "favorites":
   return (

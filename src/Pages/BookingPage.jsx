@@ -163,7 +163,7 @@ function handleConfirmBooking() {
 
       </main>
 
-      <Footer/>
+      <Footer setCurrentPage={setCurrentPage} />
 
     </div>
   );
