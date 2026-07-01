@@ -4,11 +4,11 @@ import { destinations } from "../data/destinations";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
-export default function DestinationsPage({ isLoggedIn,  setIsLoggedIn, setCurrentPage, name, image, city,
-  country, longDescription, rating, pricePerNight, amenities, rooms }) {
+export default function DestinationsPage({ isLoggedIn, setIsLoggedIn, setCurrentPage,
+  name, image, city, country, longDescription, rating, pricePerNight, amenities, rooms }) {
   return (
     <>
-    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
+    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />
 
       <div style={{backgroundColor: "orange" }}>
         <div className="hero">
@@ -25,19 +25,13 @@ export default function DestinationsPage({ isLoggedIn,  setIsLoggedIn, setCurren
             <p><br/>Amenities: {amenities.join(" · ")}</p>
           </div>
         </div>
+
         <div>
-          {/*
-          <a href="https://picsum.photos/200/300" target="_blank">
-  <img src="https://picsum.photos/200/300" width="200" height="300"/>
-</a>
-           */}
-          { image != null ? <img src={image} width="auto" height="auto" /> : "NO IMAGE" }
-{/*       longDescription={selectedDestination.longDescription}
-          shortDescription={selectedDestination.shortDescription}
-          rating={selectedDestination.rating}
-          pricePerNight={selectedDestination.pricePerNight}
-          amenities={selectedDestination.amenities}
-*/}
+          { image != null ? (
+            <a href={image} target="_blank"><img src={image} width="auto" height="auto" style={{cursor: "zoom-in"}} /></a>
+          ) : "NO IMAGE"
+          }
+
           <div>
             <h2>DESCRIPTION</h2>
             {longDescription}
@@ -45,11 +39,8 @@ export default function DestinationsPage({ isLoggedIn,  setIsLoggedIn, setCurren
             <br/>
             <br/>
 
-            <button onClick={() => {if (isLoggedIn) {setCurrentPage("booking");} else {setCurrentPage("login");}}}>Book Now</button>
-
+            <button className="button-primary" onClick={() => {if (isLoggedIn) {setCurrentPage("booking");} else {setCurrentPage("login");}}}>Book Now</button>
           </div>
-
-          
         </div>
 
       </section>
