@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { signup, getUsers } from "../Services/authService";
 import "../Styles/Auth.css";
-import "../Styles/buttons.css";
-import "../Styles/global.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import PasswordStatus from "../Components/PasswordStatus";

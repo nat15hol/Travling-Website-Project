@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import "../Styles/ConfirmationPage.css";
-import "../Styles/buttons.css";
 
 function ConfirmationPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, selectedDestination }) {
 

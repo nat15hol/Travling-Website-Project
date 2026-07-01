@@ -84,8 +84,8 @@ function HomePage({
                                     longDescription: destination.longDescription,
                                     rating: destination.rating,
                                     pricePerNight: destination.pricePerNight,
-                                    amenities: destination.amenities/*,
-                                    rooms: destination.rooms*/
+                                    amenities: destination.amenities,
+                                    rooms: destination.rooms
                                 });
                                 setCurrentPage("destination");
                             }}
@@ -154,8 +154,8 @@ function HomePage({
                                     longDescription: destination.longDescription,
                                     rating: destination.rating,
                                     pricePerNight: destination.pricePerNight,
-                                    amenities: destination.amenities/*,
-                                    rooms: destination.rooms*/
+                                    amenities: destination.amenities,
+                                    rooms: destination.rooms
                                 });
                                 setCurrentPage("destination");
                             }}

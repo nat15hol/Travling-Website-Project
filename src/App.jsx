@@ -70,6 +70,7 @@ function App() {
           rating={selectedDestination.rating}
           pricePerNight={selectedDestination.pricePerNight}
           amenities={selectedDestination.amenities}
+          rooms={selectedDestination.rooms}
         />
       );
     

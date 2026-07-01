@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "../Styles/buttons.css";
-import "../Styles/global.css";
 import "../Styles/Auth.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
