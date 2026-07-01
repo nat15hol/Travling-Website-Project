@@ -350,6 +350,7 @@ export default function AccessAccountPage({
             <div className="profile-row">
               {!editPassword ? (
                 <div className="row-inline">
+                  
                   <p><strong>Password:</strong> ************</p>
                   <div className="button-inline">
                     <button onClick={() => setEditPassword(true)}>Edit</button>
@@ -416,9 +417,13 @@ export default function AccessAccountPage({
                   <div className="priceBox">
                     <span>Price per night</span>
                     <h2>${item.pricePerNight}</h2>
-                    <button onClick={() => openDestination(item)}>Book now</button>
+                    <button className="actionButton" onClick={() => openDestination(item)}>
+  Book now
+</button>
                     <small>Free cancellation</small>
-                    <button onClick={() => removeFavorite(item.id)}>Remove</button>
+                    <button className="removeButton" onClick={() => removeFavorite(item.id)}>
+  Remove
+</button>
                   </div>
                 </article>
               ))
@@ -452,9 +457,13 @@ export default function AccessAccountPage({
                   <span>Price per night</span>
                   <h2>${item.pricePerNight}</h2>
 
-                  <button onClick={() => openDestination(item)}>View Details</button>
+                  <button className="actionButton" onClick={() => openDestination(item)}>
+  View Details
+</button>
 
-                  <button className="cancelBookingButton" onClick={() => cancelBooking(item.bookingId)}>Cancel Booking</button>
+<button className="removeButton" onClick={() => cancelBooking(item.bookingId)}>
+  Cancel Booking
+</button>
 
                 </div>
 
