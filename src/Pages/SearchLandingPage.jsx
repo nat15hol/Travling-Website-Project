@@ -5,22 +5,28 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import SearchBar from "../Components/SearchBar";
 
-function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchData, setSelectedDestination,}) {
+function SearchLandingPage({ isLoggedIn, setIsLoggedIn, setCurrentPage, searchData, setSelectedDestination, }) {
 
-  /*-------------------------------*/ 
-  /*--------Search bar-------------*/ 
-  /*-------------------------------*/ 
+  /*-------------------------------*/
+  /*--------Search bar-------------*/
+  /*-------------------------------*/
   const [searchedCity, setSearchedCity] = useState(searchData.city);
   const [searchedGuestCount, setSearchedGuestCount] = useState(searchData.guests);
 
-  function handleSearch(city, guests) {
+  //Added more parameters to the search bar for check-in and check-out dates
+  const [searchedCheckInDate, setSearchedCheckInDate] = useState(searchData.checkInDate);
+  const [searchedCheckOutDate, setSearchedCheckOutDate] = useState(searchData.checkOutDate);
+
+  function handleSearch(city, guests, checkInDate, checkOutDate) {
     setSearchedCity(city);
     setSearchedGuestCount(guests);
+    setSearchedCheckInDate(checkInDate);
+    setSearchedCheckOutDate(checkOutDate);
   }
 
-  /*-------------------------------*/ 
-  /*--------Filter Options---------*/ 
-  /*-------------------------------*/ 
+  /*-------------------------------*/
+  /*--------Filter Options---------*/
+  /*-------------------------------*/
   const [maxPrice, setMaxPrice] = useState(250);
   const [selectedRatings, setSelectedRatings] = useState([1, 2, 3, 4, 5]);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
@@ -29,31 +35,31 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
   const [sortOption, setSortOption] = useState("recommended");
 
   function toggleRating(rating) {
-    if (selectedRatings.includes(rating)) { 
-      setSelectedRatings(selectedRatings.filter((item) => item !== rating)); 
-    } else { 
-      setSelectedRatings([...selectedRatings, rating]); 
+    if (selectedRatings.includes(rating)) {
+      setSelectedRatings(selectedRatings.filter((item) => item !== rating));
+    } else {
+      setSelectedRatings([...selectedRatings, rating]);
     }
   }
 
   function toggleAmenity(amenity) {
-    if (selectedAmenities.includes(amenity)) { 
-      setSelectedAmenities(selectedAmenities.filter((item) => item !== amenity)); 
-    } else { 
-      setSelectedAmenities([...selectedAmenities, amenity]); 
+    if (selectedAmenities.includes(amenity)) {
+      setSelectedAmenities(selectedAmenities.filter((item) => item !== amenity));
+    } else {
+      setSelectedAmenities([...selectedAmenities, amenity]);
     }
   }
 
-  /*-------------------------------*/ 
-  /*--------Filter Results---------*/ 
-  /*-------------------------------*/ 
-  const filteredDestinations = destinations.filter((destination) => { 
+  /*-------------------------------*/
+  /*--------Filter Results---------*/
+  /*-------------------------------*/
+  const filteredDestinations = destinations.filter((destination) => {
     const matchesCity = destination.city.toLowerCase() === searchedCity.toLowerCase();
     const hasRoomForGuests = destination.rooms.some((room) => room.maxGuests >= searchedGuestCount);
-    const matchesPrice = destination.pricePerNight <= maxPrice;  
+    const matchesPrice = destination.pricePerNight <= maxPrice;
     const matchesRating = selectedRatings.includes(destination.rating);
     const matchesAmenities = selectedAmenities.length === 0 || selectedAmenities.every((amenity) => destination.amenities.includes(amenity));
-    
+
     return matchesCity && hasRoomForGuests && matchesPrice && matchesRating && matchesAmenities;
   });
 
@@ -65,28 +71,28 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
   });
 
 
-  /*-------------------------------*/ 
-  /*--------Destination Cards-------------*/ 
-  /*-------------------------------*/ 
+  /*-------------------------------*/
+  /*--------Destination Cards-------------*/
+  /*-------------------------------*/
   function toggleFavorite(destination) {
-  const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-  const exists = stored.some(fav => fav.id === destination.id);
-  let updated;
-  if (exists) { updated = stored.filter(fav => fav.id !== destination.id); } 
-  else { updated = [...stored, destination]; }
-  localStorage.setItem("favorites", JSON.stringify(updated));
+    const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+    const exists = stored.some(fav => fav.id === destination.id);
+    let updated;
+    if (exists) { updated = stored.filter(fav => fav.id !== destination.id); }
+    else { updated = [...stored, destination]; }
+    localStorage.setItem("favorites", JSON.stringify(updated));
   }
 
   function openDestination(destination) {
-  console.log("Clicked destination:", destination);
-  setSelectedDestination(destination);
-  setCurrentPage("destination");
+    console.log("Clicked destination:", destination);
+    setSelectedDestination(destination);
+    setCurrentPage("destination");
   }
 
 
-  /*-------------------------------*/ 
-  /*--------Location Data----------*/ 
-  /*-------------------------------*/ 
+  /*-------------------------------*/
+  /*--------Location Data----------*/
+  /*-------------------------------*/
   const cityHeroInfo = {
     London: {
       title: "London, United Kingdom",
@@ -109,20 +115,28 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
       image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4",
     },
   };
-  
+
   const matchedCity = Object.keys(cityHeroInfo).find((city) => city.toLowerCase() === searchedCity.toLowerCase()) || "London";
   const currentHero = cityHeroInfo[matchedCity] || cityHeroInfo.London;
 
   return (
     <div className="search-page">
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage}/>
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentPage={setCurrentPage} />
 
       <header className="hero" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(${currentHero.image})` }}>
         <div className="heroText">
           <h1>{currentHero.title}</h1>
           <p>{currentHero.text}</p>
         </div>
-        <SearchBar startCity={searchedCity} startGuests={searchedGuestCount} onSearch={handleSearch}/>
+
+
+        <SearchBar
+          startCity={searchedCity}
+          startGuests={searchedGuestCount}
+          startCheckInDate={searchedCheckInDate}
+          startCheckOutDate={searchedCheckOutDate}
+          onSearch={handleSearch}
+        />
       </header>
 
       <main className="content">
@@ -158,9 +172,9 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
             <h4>Guest rating</h4>
             {[5, 4, 3, 2, 1].map((stars) => (
               <label key={stars}>
-                <input 
-                  type="checkbox" 
-                  checked={selectedRatings.includes(stars)} 
+                <input
+                  type="checkbox"
+                  checked={selectedRatings.includes(stars)}
                   onChange={() => toggleRating(stars)}
                 />
                 {"⭐".repeat(stars)}
@@ -170,9 +184,9 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
             <h4>Amenities</h4>
             {allAmenities.map((amenity) => (
               <label key={amenity}>
-                <input 
-                  type="checkbox" 
-                  checked={selectedAmenities.includes(amenity)} 
+                <input
+                  type="checkbox"
+                  checked={selectedAmenities.includes(amenity)}
                   onChange={() => toggleAmenity(amenity)}
                 />
                 {amenity}
@@ -195,33 +209,33 @@ function SearchLandingPage({isLoggedIn, setIsLoggedIn, setCurrentPage, searchDat
 
           {sortedDestinations.length === 0 ? (
             <p className="no-results">No places match your filters. Try adjusting your search!</p>
-             ) : (
+          ) : (
             sortedDestinations.map((destination) => (
 
-            <article className="hotelCard" key={destination.id}>
+              <article className="hotelCard" key={destination.id}>
 
-            <img src={destination.image} alt={destination.name} loading="lazy" onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}/>
+                <img src={destination.image} alt={destination.name} loading="lazy" onClick={() => openDestination(destination)} style={{ cursor: "pointer" }} />
 
-            <div className="hotelInfo">
-              <h3 onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}>{destination.name}</h3>
-              <p>📍 {destination.city}, {destination.country}</p>
-              <p>{destination.rating} ⭐ <span>({destination.rooms.length} room types)</span></p>
-              <p>{destination.shortDescription}</p>
-              <p className="amenities">
-                {destination.amenities.join(" · ")}
-              </p>
-            </div>
+                <div className="hotelInfo">
+                  <h3 onClick={() => openDestination(destination)} style={{ cursor: "pointer" }}>{destination.name}</h3>
+                  <p>📍 {destination.city}, {destination.country}</p>
+                  <p>{destination.rating} ⭐ <span>({destination.rooms.length} room types)</span></p>
+                  <p>{destination.shortDescription}</p>
+                  <p className="amenities">
+                    {destination.amenities.join(" · ")}
+                  </p>
+                </div>
 
-            <div className="priceBox">
-              <span>Price per night</span>
-              <h2>${destination.pricePerNight}</h2>
-              <small>Free cancellation</small>
-              <button onClick={() => toggleFavorite(destination)}>❤️ Save</button>
-            </div>
-            
-            </article>
-                  ))
-               )}
+                <div className="priceBox">
+                  <span>Price per night</span>
+                  <h2>${destination.pricePerNight}</h2>
+                  <small>Free cancellation</small>
+                  <button onClick={() => toggleFavorite(destination)}>❤️ Save</button>
+                </div>
+
+              </article>
+            ))
+          )}
         </section>
       </main>
 
